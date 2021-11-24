@@ -1,5 +1,6 @@
 import 'package:doctor/components/default_button.dart';
 import 'package:doctor/screens/doctor%20details/components/details_form.dart';
+import 'package:doctor/screens/doctor%20details/doctor_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -114,8 +115,10 @@ class _OtpFormState extends State<OtpForm> {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) {
                   return Scaffold(
-                    appBar: AppBar(title: Text("Verification"),),
-                    body: DetailsFormScreen(),
+                    appBar: AppBar(
+                      title: Text("Verification"),
+                    ),
+                    body: DoctorDetailScreen(),
                   );
                 },
               ));
