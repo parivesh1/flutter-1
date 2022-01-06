@@ -1,7 +1,5 @@
+import 'package:doctor/screens/PatientForm.dart';
 import 'package:flutter/material.dart';
-
-import 'LoginScreen.dart';
-import 'PatientForm.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   TabController tabController;
@@ -42,7 +40,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   child: Container(
                     child: Text(
                       "Add Patient",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 17),
                     ),
                   ),
                   style: TextButton.styleFrom(
@@ -52,8 +50,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                       primary: Colors.white,
                       shape: RoundedRectangleBorder(
                           side: BorderSide(color: Colors.black),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(25)))),
+                          borderRadius: BorderRadius.all(Radius.circular(25)))),
                 ),
               );
             },
@@ -64,9 +61,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               onPressed: () {
                 _showTimePicker();
               },
-              child: Text(
-                "Add Delay",
-                style: TextStyle(color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: Text(
+                  "Delay",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               style: TextButton.styleFrom(
                   minimumSize: Size(0, 0),
@@ -79,12 +79,23 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             ),
           ),
         ],
-        title: Text(
-          "Doctor App",
-          style: TextStyle(color: Colors.black),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 4),
+              child: CircleAvatar(
+                radius: 12,
+                backgroundColor: Colors.grey,
+              ),
+            ),
+            Text(
+              "Quiky",
+              style: TextStyle(color: Colors.black),
+            ),
+          ],
         ),
       ),
-      body: LoginScreen(),
     );
   }
 

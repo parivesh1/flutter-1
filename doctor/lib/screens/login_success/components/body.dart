@@ -1,4 +1,5 @@
 import 'package:doctor/components/default_button.dart';
+import 'package:doctor/screens/waitinglist.dart';
 import 'package:flutter/material.dart';
 
 import '../../../size_config.dart';
@@ -28,11 +29,11 @@ class Body extends StatelessWidget {
           child: DefaultButton(
             text: "Back to home",
             press: () {
-              //Navigator.pushNamed(context, HomeScreen.routeName);
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => WaitingList()));
             },
           ),
-        ),
-        Spacer(),
+        )
       ],
     );
   }
