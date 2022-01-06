@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PatientForm extends StatefulWidget {
-  const PatientForm({Key key}) : super(key: key);
+  BuildContext ctx;
+  PatientForm(this.ctx);
 
   @override
   _PatientFormState createState() => _PatientFormState();
@@ -46,34 +47,31 @@ class _PatientFormState extends State<PatientForm> {
   }
 
   Widget _buildGender() {
-    return Row(
-      children: [
-        RadioListTile(
-          title: Text("Male"),
-          value: 'Male',
-          groupValue: _groupValue,
-          onChanged: (value) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text("Male"),
+          Radio(value: "male", groupValue: _groupValue, onChanged: (value) {
             setState(() {
-              _groupValue = value;
-            });
-          },
-        ),
-        RadioListTile(
-          title: Text("Female"),
-          value: 'Female',
-          groupValue: _groupValue,
-          onChanged: (value) {
+                  _groupValue = value;
+                });
+          },),
+            Text("Female"),
+          Radio(value: "female", groupValue: _groupValue, onChanged: (value) {
             setState(() {
-              _groupValue = value;
-            });
-          },
-        )
-      ],
+                  _groupValue = value;
+                });
+          },),
+        ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Form(

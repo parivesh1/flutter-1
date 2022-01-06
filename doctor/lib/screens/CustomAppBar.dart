@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   TabController tabController;
-  CustomAppBar(this.tabController);
+  BuildContext ctx;
+  CustomAppBar(this.tabController, this.ctx);
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,30 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   onPressed: () {
                     showModalBottomSheet(
                       isScrollControlled: true,
-                      context: context,
-                      builder: (BuildContext context) {
-                        return PatientForm();
+                      context: ctx,
+                      builder: (BuildContext ctx) {
+                        return PatientForm(ctx);
+                        // return Column(
+                        //   mainAxisSize: MainAxisSize.min,
+                        //   children: [
+                        //     TextFormField(
+                        //       autofocus: true,
+                        //       decoration: InputDecoration(labelText: 'Age'),
+                        //       validator: (value) {
+                        //         if (value.isEmpty) {
+                        //           return 'Age is required';
+                        //         }
+                        //         int age = int.tryParse(value);
+                        //         if (age < 0 || age > 120) {
+                        //           return 'Enter a valid Age';
+                        //         }
+                        //         return null;
+                        //       },
+
+                        //     ),
+                        //     Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                        //   ],
+                        // );
                       },
                     );
                   },
@@ -59,7 +81,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
               onPressed: () {
-                _showTimePicker();
+                showTimePicker(context: ctx, initialTime: TimeOfDay.now());
               },
               child: Padding(
                 padding: const EdgeInsets.all(4),
@@ -103,4 +125,4 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(kToolbarHeight + 50);
 }
 
-class _showTimePicker {}
+
