@@ -24,7 +24,7 @@ class _WaitingListState extends State<WaitingList>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(_tabController),
+      appBar: CustomAppBar(_tabController,context),
       body: Column(
         children: [
           Expanded(
