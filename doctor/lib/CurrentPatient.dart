@@ -1,6 +1,7 @@
+import 'package:doctor/Providers/patientListProvider.dart';
 import 'package:flutter/material.dart';
 
-Widget CurrentPatient() {
+Widget CurrentPatient(PatientModel p) {
   return Card(
     margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8),
     elevation: 30,
@@ -27,11 +28,11 @@ Widget CurrentPatient() {
                     ),
                   ),
                   Text(
-                    "Patient Name",
+                    "${p.name}",
                     style: TextStyle(fontSize: 16, color: Colors.black),
                   ),
                   Text(
-                    "Male ,21",
+                    "${p.gender} ,${p.age}",
                     style: TextStyle(
                         fontSize: 12, color: Colors.black.withOpacity(0.6)),
                   ),
@@ -40,7 +41,7 @@ Widget CurrentPatient() {
               CircleAvatar(
                 child: CircleAvatar(
                   child: Text(
-                    "17",
+                    "${p.token}",
                     style: TextStyle(color: Colors.black),
                   ),
                   radius: 19,
@@ -58,7 +59,7 @@ Widget CurrentPatient() {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text("Time left : 17 mins")],
+            children: [Text("Time left : ${p.minutesLeft} mins")],
           )
         ],
       ),
