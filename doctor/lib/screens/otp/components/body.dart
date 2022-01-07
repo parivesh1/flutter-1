@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:intl_phone_field/phone_number.dart';
 import '../../../size_config.dart';
 import 'otp_form.dart';
 
 class Body extends StatelessWidget {
+  final PhoneNumber _phoneNumber;
+  Body(this._phoneNumber);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,7 +22,7 @@ class Body extends StatelessWidget {
                 "OTP Verification",
                 style: TextStyle(fontSize: 16),
               ),
-              Text("We sent your code to +91 7500836 ***"),
+              Text("We sent your code to +91 7500 56***"),
               buildTimer(),
               OtpForm(),
               SizedBox(height: SizeConfig.screenHeight * 0.1),
@@ -28,9 +30,12 @@ class Body extends StatelessWidget {
                 onTap: () {
                   // OTP code resend
                 },
-                child: Text(
-                  "Resend OTP Code",
-                  style: TextStyle(decoration: TextDecoration.underline),
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    "Resend OTP Code",
+                    style: TextStyle(decoration: TextDecoration.underline),
+                  ),
                 ),
               )
             ],
@@ -44,7 +49,7 @@ class Body extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("This code will expired in "),
+        Text("This code will get expired in "),
         TweenAnimationBuilder(
           tween: Tween(begin: 30.0, end: 0.0),
           duration: Duration(seconds: 30),

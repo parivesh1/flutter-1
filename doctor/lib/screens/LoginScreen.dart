@@ -1,9 +1,5 @@
-import 'package:doctor/screens/mainScaffold.dart';
 import 'package:doctor/screens/otp/otp_screen.dart';
-import 'package:doctor/screens/otpVerification.dart';
-import 'package:doctor/screens/waitinglist.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login/flutter_login.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/phone_number.dart';
 
@@ -15,19 +11,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String _name,
-      _clinicName,
-      _specialization,
-      _degree,
-      _address,
-      _fees,
-      _averageCheckupTime;
+  String _name;
   PhoneNumber _phoneNo;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Widget _buildname() {
     return TextFormField(
       autofocus: true,
-      decoration: InputDecoration(labelText: 'Name'),
+      decoration: InputDecoration(
+          labelText: 'Name', hintStyle: TextStyle(fontSize: 16)),
       validator: (value) {
         if (value.isEmpty) {
           return 'Name is required';
@@ -40,11 +31,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildPhoneNo() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(16),
       child: IntlPhoneField(
         initialCountryCode: "IN",
         decoration: InputDecoration(
           labelText: 'Phone Number',
+          hintStyle: TextStyle(fontSize: 16),
           border: OutlineInputBorder(
             borderSide: BorderSide(),
           ),
@@ -60,16 +52,18 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(16),
       child: SingleChildScrollView(
         child: Form(
             key: _formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildname(),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: _buildname(),
+                ),
                 _buildPhoneNo(),
-
                 SizedBox(
                   height: 20,
                 ),
@@ -86,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) {
-                        return OtpScreen();
+                        return OtpScreen(_phoneNo);
                       },
                     ));
                   },

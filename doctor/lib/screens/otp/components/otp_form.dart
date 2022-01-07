@@ -1,5 +1,4 @@
 import 'package:doctor/components/default_button.dart';
-import 'package:doctor/screens/doctor%20details/components/details_form.dart';
 import 'package:doctor/screens/doctor%20details/doctor_detail_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -44,6 +43,7 @@ class _OtpFormState extends State<OtpForm> {
 
   @override
   Widget build(BuildContext context) {
+    bool pin_added = false;
     return Form(
       child: Column(
         children: [
@@ -101,6 +101,7 @@ class _OtpFormState extends State<OtpForm> {
                   onChanged: (value) {
                     if (value.length == 1) {
                       pin4FocusNode.unfocus();
+                      pin_added = true;
                       // Then you need to check is the code is correct or not
                     }
                   },
