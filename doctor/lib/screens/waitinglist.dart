@@ -1,7 +1,9 @@
 import 'package:doctor/CurrentPatient.dart';
+import 'package:doctor/Providers/patientListProvider.dart';
 import 'package:doctor/screens/CustomAppBar.dart';
 import 'package:doctor/screens/bookingListView.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'ReachedListView.dart';
 
@@ -23,25 +25,39 @@ class _WaitingListState extends State<WaitingList>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(_tabController,context),
-      body: Column(
-        children: [
-          Expanded(
-            child: TabBarView(controller: _tabController, children: [
-              Column(
-                children: [
-                  CurrentPatient(),
-                  ReachedListCard(),
-                  ReachedListCard()
-                ],
-              ),
-              Column(
-                children: [BookingListCard(), BookingListCard()],
-              )
-            ]),
-          )
-        ],
+    return ChangeNotifierProvider<PatientListProvider>(
+      create: (context) => PatientListProvider(),
+      child: Scaffold(
+        appBar: CustomAppBar(_tabController, context),
+        body: Column(
+          children: [
+            Expanded(
+              child: TabBarView(controller: _tabController, children: [
+                Consumer<PatientListProvider>(
+                  builder: (context, patientListProvider, child) {
+                    return ListView.builder(
+                      itemCount: patientListProvider.reachedList.length,
+                      itemBuilder: (context, index) {
+                      if (index == 0)
+                        return CurrentPatient(patientListProvider.reachedList[index]);
+                      else
+                        return ReachedListCard(patientListProvider.reachedList[index]);
+                    });
+                  },
+                ),
+                Consumer<PatientListProvider>(
+                  builder: (context, patientListProvider, child) {
+                    return ListView.builder(
+                      itemCount: patientListProvider.bookingList.length,
+                      itemBuilder: (context, index) {
+                        return BookingListCard(patientListProvider.bookingList[index]);
+                    });
+                  },
+                ),
+              ]),
+            )
+          ],
+        ),
       ),
     );
   }

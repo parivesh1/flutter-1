@@ -24,14 +24,17 @@ class Body extends StatelessWidget {
           ),
         ),
         Spacer(),
-        SizedBox(
-          width: SizeConfig.screenWidth * 0.6,
-          child: DefaultButton(
-            text: "Back to home",
-            press: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => WaitingList()));
-            },
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: SizedBox(
+            width: SizeConfig.screenWidth * 0.6,
+            child: DefaultButton(
+              text: "Back to home",
+              press: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => WaitingList()));
+              },
+            ),
           ),
         )
       ],

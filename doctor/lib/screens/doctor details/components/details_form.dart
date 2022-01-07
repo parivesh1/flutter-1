@@ -1,5 +1,5 @@
+import 'package:doctor/screens/doctor%20details/components/days.dart';
 import 'package:doctor/screens/login_success/login_success_screen.dart';
-import 'package:doctor/screens/waitinglist.dart';
 import 'package:flutter/material.dart';
 
 class DetailsForm extends StatefulWidget {
@@ -10,7 +10,11 @@ class DetailsForm extends StatefulWidget {
 }
 
 class _DetailsFormState extends State<DetailsForm> {
+  TimeOfDay startingSelectedTime;
+  TimeOfDay endingSelectedTime;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   String _name,
       _clinicName,
       _specialization,
@@ -19,11 +23,15 @@ class _DetailsFormState extends State<DetailsForm> {
       _fees,
       _email,
       _averageCheckupTime;
+
   Widget _buildclinicName() {
     return TextFormField(
       autofocus: true,
-      decoration: getDecoration("Clinic Name"),
+      decoration: getDecoration("Clinic Name", Icons.medical_services_rounded),
       validator: (value) {
+        if (value.isEmpty) {
+          return 'Name is required';
+        }
         return null;
       },
       onSaved: (newValue) => _clinicName = newValue,
@@ -33,7 +41,7 @@ class _DetailsFormState extends State<DetailsForm> {
   Widget _buildSpecialization() {
     return TextFormField(
       autofocus: true,
-      decoration: getDecoration("Specialization"),
+      decoration: getDecoration("Specialization", Icons.medication_rounded),
       validator: (value) {
         if (value.isEmpty) {
           return 'Specialization is required';
@@ -47,7 +55,7 @@ class _DetailsFormState extends State<DetailsForm> {
   Widget _builddegree() {
     return TextFormField(
       autofocus: true,
-      decoration: getDecoration("Degree"),
+      decoration: getDecoration("Degree", Icons.menu_book_rounded),
       validator: (value) {
         if (value.isEmpty) {
           return 'Degree is required';
@@ -61,7 +69,7 @@ class _DetailsFormState extends State<DetailsForm> {
   Widget _buildfees() {
     return TextFormField(
       autofocus: true,
-      decoration: getDecoration("Fees"),
+      decoration: getDecoration("Fees", Icons.attach_money_rounded),
       validator: (value) {
         if (value.isEmpty) {
           return 'Fees is required';
@@ -72,24 +80,81 @@ class _DetailsFormState extends State<DetailsForm> {
     );
   }
 
-  Widget _buildaverageCheckupTime() {
-    return TextFormField(
-      autofocus: true,
-      decoration: getDecoration("Check up Time"),
-      validator: (value) {
-        if (value.isEmpty) {
-          return 'Time is required';
-        }
-        return null;
+  Widget _buildStartingCheckupTime() {
+    return InkWell(
+      onTap: () {
+        _showTimePickerStarting(context);
       },
-      onSaved: (newValue) => _averageCheckupTime = newValue,
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    "Starting Checkup Time:",
+                    style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                  ),
+                  startingSelectedTime != null
+                      ? Text(
+                          "${startingSelectedTime.hour}:${startingSelectedTime.minute}",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      : Text(""),
+                ],
+              ),
+              Icon(Icons.timelapse_sharp)
+            ],
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.black, width: 1)),
+      ),
+    );
+  }
+
+  Widget _buildEndingCheckupTime() {
+    return InkWell(
+      onTap: () {
+        _showTimePickerEnding(context);
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    "Ending Checkup Time:",
+                    style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                  ),
+                  endingSelectedTime != null
+                      ? Text(
+                          "${endingSelectedTime.hour}:${endingSelectedTime.minute}",
+                          style: TextStyle(fontWeight: FontWeight.bold))
+                      : Text(""),
+                ],
+              ),
+              Icon(Icons.timelapse_sharp)
+            ],
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.black, width: 1)),
+      ),
     );
   }
 
   Widget _buildaddress() {
     return TextFormField(
       autofocus: true,
-      decoration: getDecoration("Address"),
+      decoration: getDecoration("Address", Icons.home_repair_service_rounded),
       validator: (value) {
         if (value.isEmpty) {
           return 'Address is required';
@@ -110,11 +175,11 @@ class _DetailsFormState extends State<DetailsForm> {
       },
       validator: (value) {
         if (value.isEmpty) {
-          return "";
+          return "Email is Empty";
         }
         return "";
       },
-      decoration: getDecoration("Email"),
+      decoration: getDecoration("Email", Icons.email_rounded),
     );
   }
 
@@ -125,31 +190,45 @@ class _DetailsFormState extends State<DetailsForm> {
         child: Column(
           children: [
             SizedBox(
-              height: 10,
+              height: 16,
             ),
             _buildclinicName(),
             SizedBox(
-              height: 10,
+              height: 16,
             ),
             _buildSpecialization(),
             SizedBox(
-              height: 10,
+              height: 16,
             ),
             _builddegree(),
             SizedBox(
-              height: 10,
-            ),
-            _buildaverageCheckupTime(),
-            SizedBox(
-              height: 10,
+              height: 16,
             ),
             _buildfees(),
             SizedBox(
-              height: 10,
+              height: 16,
             ),
             _buildaddress(),
             SizedBox(
-              height: 10,
+              height: 16,
+            ),
+            Row(
+              children: [
+                Expanded(flex: 100, child: _buildStartingCheckupTime()),
+                Expanded(flex: 2, child: Text("")),
+                Expanded(flex: 100, child: _buildEndingCheckupTime()),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Text(
+                "Select Days on which you take Appointments:",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Days(),
+            SizedBox(
+              height: 8,
             ),
             ElevatedButton(
               child: Text(
@@ -175,9 +254,35 @@ class _DetailsFormState extends State<DetailsForm> {
       ),
     );
   }
+
+  _showTimePickerStarting(BuildContext context) async {
+    final TimeOfDay timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(hour: 0, minute: 15),
+      initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null && timeOfDay != startingSelectedTime) {
+      setState(() {
+        startingSelectedTime = timeOfDay;
+      });
+    }
+  }
+
+  _showTimePickerEnding(BuildContext context) async {
+    final TimeOfDay timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(hour: 0, minute: 15),
+      initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null && timeOfDay != startingSelectedTime) {
+      setState(() {
+        endingSelectedTime = timeOfDay;
+      });
+    }
+  }
 }
 
-InputDecoration getDecoration(String title) {
+InputDecoration getDecoration(String title, IconData data) {
   return InputDecoration(
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
@@ -188,11 +293,10 @@ InputDecoration getDecoration(String title) {
       gapPadding: 10,
     ),
     labelText: title,
-
     // If  you are using latest version of flutter then lable text and hint text shown like this
     // if you r using flutter less then 1.20.* then maybe this is not working properly
     floatingLabelBehavior: FloatingLabelBehavior.always,
     contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
-    suffixIcon: Icon(Icons.email),
+    suffixIcon: Icon(data),
   );
 }
