@@ -1,10 +1,21 @@
 import 'package:doctor/screens/PatientForm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   TabController tabController;
   BuildContext ctx;
   CustomAppBar(this.tabController, this.ctx);
+
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight + 50);
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+  DateTime _dateTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +23,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         bottom: TabBar(
-          controller: tabController,
+          controller: widget.tabController,
           tabs: [
             Tab(
               child: Text(
@@ -32,7 +43,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   onPressed: () {
                     showModalBottomSheet(
                       isScrollControlled: true,
-                      context: ctx,
+                      context: widget.ctx,
                       builder: (BuildContext ctx) {
                         return PatientForm(ctx);
                         // return Column(
@@ -81,7 +92,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
               onPressed: () {
-                showTimePicker(context: ctx, initialTime: TimeOfDay.now());
+                TimePickerSpinner(
+                  is24HourMode: true,
+                  onTimeChange: (time) {
+                    setState(() {
+                      _dateTime = time;
+                    });
+                  },
+                );
               },
               child: Padding(
                 padding: const EdgeInsets.all(4),
@@ -124,5 +142,3 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight + 50);
 }
-
-
