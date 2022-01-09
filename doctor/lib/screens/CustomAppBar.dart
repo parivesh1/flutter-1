@@ -1,21 +1,10 @@
 import 'package:doctor/screens/PatientForm.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 
-class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   TabController tabController;
   BuildContext ctx;
   CustomAppBar(this.tabController, this.ctx);
-
-  @override
-  State<CustomAppBar> createState() => _CustomAppBarState();
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight + 50);
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
-  DateTime _dateTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +12,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         bottom: TabBar(
-          controller: widget.tabController,
+          controller: tabController,
           tabs: [
             Tab(
               child: Text(
@@ -43,9 +32,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   onPressed: () {
                     showModalBottomSheet(
                       isScrollControlled: true,
-                      context: widget.ctx,
-                      builder: (BuildContext ctx) {
-                        return PatientForm(ctx);
+                      context: ctx,
+                      builder: (BuildContext context) {
+                        return PatientForm();
                         // return Column(
                         //   mainAxisSize: MainAxisSize.min,
                         //   children: [
@@ -92,14 +81,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
               onPressed: () {
-                TimePickerSpinner(
-                  is24HourMode: true,
-                  onTimeChange: (time) {
-                    setState(() {
-                      _dateTime = time;
-                    });
-                  },
-                );
+                showTimePicker(context: ctx, initialTime: TimeOfDay.now());
               },
               child: Padding(
                 padding: const EdgeInsets.all(4),
@@ -142,3 +124,5 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight + 50);
 }
+
+

@@ -1,8 +1,8 @@
+import 'package:doctor/Providers/patientListProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PatientForm extends StatefulWidget {
-  BuildContext ctx;
-  PatientForm(this.ctx);
 
   @override
   _PatientFormState createState() => _PatientFormState();
@@ -53,17 +53,25 @@ class _PatientFormState extends State<PatientForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text("Male"),
-          Radio(value: "male", groupValue: _groupValue, onChanged: (value) {
-            setState(() {
-                  _groupValue = value;
-                });
-          },),
-            Text("Female"),
-          Radio(value: "female", groupValue: _groupValue, onChanged: (value) {
-            setState(() {
-                  _groupValue = value;
-                });
-          },),
+          Radio(
+            value: "male",
+            groupValue: _groupValue,
+            onChanged: (value) {
+              setState(() {
+                _groupValue = value;
+              });
+            },
+          ),
+          Text("Female"),
+          Radio(
+            value: "female",
+            groupValue: _groupValue,
+            onChanged: (value) {
+              setState(() {
+                _groupValue = value;
+              });
+            },
+          ),
         ],
       ),
     );
@@ -71,38 +79,41 @@ class _PatientFormState extends State<PatientForm> {
 
   @override
   Widget build(BuildContext context) {
-    
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildName(),
-              _buildAge(),
-              _buildGender(),
-              SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    if (!_formKey.currentState.validate()) {
-                      return;
-                    }
-                    _formKey.currentState.save();
-
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "Submit",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  )),
-              Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom))
-            ],
-          )),
+    return Consumer<PatientListProvider>(
+      builder: (context, value, child) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildName(),
+                  _buildAge(),
+                  _buildGender(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        if (!_formKey.currentState.validate()) {
+                          return;
+                        }
+                        _formKey.currentState.save();
+                        value.add(PatientModel(_name, _gender, int.parse(_age), 0, 0));
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom))
+                ],
+              )),
+        );
+      },
     );
   }
 }

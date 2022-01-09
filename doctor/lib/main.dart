@@ -1,5 +1,8 @@
 import 'package:doctor/screens/mainScaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'Providers/patientListProvider.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +25,7 @@ class _MyAppState extends State<MyApp> {
               buttonColor: Colors.blue[600],
               textTheme: ButtonTextTheme.primary,
             )),
-        home: MainScaffold());
+        home: ChangeNotifierProvider<PatientListProvider>(
+            create: (context) => PatientListProvider(), child: MainScaffold()));
   }
 }

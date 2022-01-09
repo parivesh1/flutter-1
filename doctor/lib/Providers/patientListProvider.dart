@@ -9,6 +9,9 @@ class PatientListProvider extends ChangeNotifier {
     PatientModel("Bard", "male", 15, 10, 3),
     PatientModel("Ciri", "Female", 20, 18, 4)
   ];
+  void add(PatientModel ele) {
+    reachedList.add(ele);
+  }
 
   void reached(String name) {
     PatientModel ele;
