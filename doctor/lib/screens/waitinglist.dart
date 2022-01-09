@@ -4,7 +4,7 @@ import 'package:doctor/screens/CustomAppBar.dart';
 import 'package:doctor/screens/bookingListView.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'ReachedListView.dart';
 
 class WaitingList extends StatefulWidget {
@@ -16,6 +16,7 @@ class WaitingList extends StatefulWidget {
 
 class _WaitingListState extends State<WaitingList>
     with SingleTickerProviderStateMixin {
+    final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
   TabController _tabController;
   @override
   void initState() {
@@ -27,36 +28,41 @@ class _WaitingListState extends State<WaitingList>
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<PatientListProvider>(
       create: (context) => PatientListProvider(),
-      child: Scaffold(
-        appBar: CustomAppBar(_tabController, context),
-        body: Column(
-          children: [
-            Expanded(
-              child: TabBarView(controller: _tabController, children: [
-                Consumer<PatientListProvider>(
-                  builder: (context, patientListProvider, child) {
-                    return ListView.builder(
-                      itemCount: patientListProvider.reachedList.length,
-                      itemBuilder: (context, index) {
-                      if (index == 0)
-                        return CurrentPatient(patientListProvider.reachedList[index]);
-                      else
-                        return ReachedListCard(patientListProvider.reachedList[index]);
-                    });
-                  },
-                ),
-                Consumer<PatientListProvider>(
-                  builder: (context, patientListProvider, child) {
-                    return ListView.builder(
-                      itemCount: patientListProvider.bookingList.length,
-                      itemBuilder: (context, index) {
-                        return BookingListCard(patientListProvider.bookingList[index]);
-                    });
-                  },
-                ),
-              ]),
-            )
-          ],
+      child: SideMenu(
+        key: _sideMenuKey,
+        menu: Container(child: Text("Drawer"),),
+        type: SideMenuType.shrinkNSlide,
+        child: Scaffold(
+          appBar: CustomAppBar(_tabController, context,_sideMenuKey),
+          body: Column(
+            children: [
+              Expanded(
+                child: TabBarView(controller: _tabController, children: [
+                  Consumer<PatientListProvider>(
+                    builder: (context, patientListProvider, child) {
+                      return ListView.builder(
+                        itemCount: patientListProvider.reachedList.length,
+                        itemBuilder: (context, index) {
+                        if (index == 0)
+                          return CurrentPatient(patientListProvider.reachedList[index]);
+                        else
+                          return ReachedListCard(patientListProvider.reachedList[index]);
+                      });
+                    },
+                  ),
+                  Consumer<PatientListProvider>(
+                    builder: (context, patientListProvider, child) {
+                      return ListView.builder(
+                        itemCount: patientListProvider.bookingList.length,
+                        itemBuilder: (context, index) {
+                          return BookingListCard(patientListProvider.bookingList[index]);
+                      });
+                    },
+                  ),
+                ]),
+              )
+            ],
+          ),
         ),
       ),
     );

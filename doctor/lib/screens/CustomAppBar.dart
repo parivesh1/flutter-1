@@ -1,10 +1,12 @@
 import 'package:doctor/screens/PatientForm.dart';
 import 'package:flutter/material.dart';
+import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   TabController tabController;
   BuildContext ctx;
-  CustomAppBar(this.tabController, this.ctx);
+  final GlobalKey<SideMenuState> _sideMenuKey;
+  CustomAppBar(this.tabController, this.ctx, this._sideMenuKey);
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,15 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             Tab(child: Text("Booking", style: TextStyle(color: Colors.teal)))
           ],
         ),
+        leading: IconButton(
+            onPressed: () {
+             
+              if (_sideMenuKey.currentState.isOpened)
+                  _sideMenuKey.currentState.closeSideMenu(); // close side menu
+                else
+                  _sideMenuKey.currentState.openSideMenu();
+            },
+            icon: Icon(Icons.menu,color: Colors.black,)),
         actions: [
           Builder(
             builder: (context) {
@@ -35,27 +46,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                       context: ctx,
                       builder: (BuildContext context) {
                         return PatientForm();
-                        // return Column(
-                        //   mainAxisSize: MainAxisSize.min,
-                        //   children: [
-                        //     TextFormField(
-                        //       autofocus: true,
-                        //       decoration: InputDecoration(labelText: 'Age'),
-                        //       validator: (value) {
-                        //         if (value.isEmpty) {
-                        //           return 'Age is required';
-                        //         }
-                        //         int age = int.tryParse(value);
-                        //         if (age < 0 || age > 120) {
-                        //           return 'Enter a valid Age';
-                        //         }
-                        //         return null;
-                        //       },
-
-                        //     ),
-                        //     Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
-                        //   ],
-                        // );
                       },
                     );
                   },
@@ -124,5 +114,3 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight + 50);
 }
-
-
