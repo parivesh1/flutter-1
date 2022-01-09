@@ -217,18 +217,20 @@ class BookingsHistoryScreen extends StatelessWidget {
             )
           ],
         ),
-        HistoryCards(),
-        HistoryCards(),
-        HistoryCards(),
-        HistoryCards(),
-        HistoryCards(),
+        HistoryCards(1),
+        HistoryCards(2),
+        HistoryCards(3),
+        HistoryCards(4),
+        HistoryCards(5),
       ],
     );
   }
 }
 
 class HistoryCards extends StatelessWidget {
-  const HistoryCards({
+  final int i;
+  const HistoryCards(
+    this.i, {
     Key key,
   }) : super(key: key);
 
@@ -271,7 +273,7 @@ class HistoryCards extends StatelessWidget {
               child: CircleAvatar(
                 child: CircleAvatar(
                   child: Text(
-                    "1",
+                    i.toString(),
                     style: TextStyle(color: Colors.black),
                   ),
                   radius: 16,

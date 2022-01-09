@@ -27,13 +27,15 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         ),
         leading: IconButton(
             onPressed: () {
-             
               if (_sideMenuKey.currentState.isOpened)
-                  _sideMenuKey.currentState.closeSideMenu(); // close side menu
-                else
-                  _sideMenuKey.currentState.openSideMenu();
+                _sideMenuKey.currentState.closeSideMenu(); // close side menu
+              else
+                _sideMenuKey.currentState.openSideMenu();
             },
-            icon: Icon(Icons.menu,color: Colors.black,)),
+            icon: Icon(
+              Icons.menu,
+              color: Colors.black,
+            )),
         actions: [
           Builder(
             builder: (context) {
@@ -71,7 +73,18 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
               onPressed: () {
-                showTimePicker(context: ctx, initialTime: TimeOfDay.now());
+                showTimePicker(
+                  context: ctx,
+                  initialTime: TimeOfDay.now(),
+                  builder: (context, childWidget) {
+                    return MediaQuery(
+                        data: MediaQuery.of(context).copyWith(
+                            // Using 24-Hour format
+                            alwaysUse24HourFormat: true),
+                        // If you want 12-Hour format, just change alwaysUse24HourFormat to false or remove all the builder argument
+                        child: childWidget);
+                  },
+                );
               },
               child: Padding(
                 padding: const EdgeInsets.all(4),

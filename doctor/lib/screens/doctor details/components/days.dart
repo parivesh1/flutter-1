@@ -45,7 +45,6 @@ class _DaysState extends State<Days> {
       ),
       onSelect: (values) {
         // <== Callback to handle the selected days
-        print(values);
       },
     );
   }

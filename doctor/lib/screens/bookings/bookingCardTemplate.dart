@@ -73,7 +73,7 @@ Card bookingCardTemplate(BuildContext context) {
                 fit: FlexFit.loose,
                 child: CircleAvatar(
                   child: Image.asset(
-                    "assets/riya.png",
+                    "assets/images/riya.png",
                     fit: BoxFit.fill,
                   ),
                   backgroundColor: Colors.white,

@@ -167,17 +167,14 @@ class _DetailsFormState extends State<DetailsForm> {
 
   Widget _buildemail() {
     return TextFormField(
+      autofocus: true,
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => _email = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {}
-        return null;
-      },
       validator: (value) {
         if (value.isEmpty) {
           return "Email is Empty";
         }
-        return "";
+        return null;
       },
       decoration: getDecoration("Email", Icons.email_rounded),
     );
@@ -209,6 +206,10 @@ class _DetailsFormState extends State<DetailsForm> {
               height: 16,
             ),
             _buildaddress(),
+            SizedBox(
+              height: 16,
+            ),
+            _buildemail(),
             SizedBox(
               height: 16,
             ),
