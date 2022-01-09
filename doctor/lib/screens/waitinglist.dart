@@ -2,6 +2,7 @@ import 'package:doctor/CurrentPatient.dart';
 import 'package:doctor/Providers/patientListProvider.dart';
 import 'package:doctor/screens/CustomAppBar.dart';
 import 'package:doctor/screens/bookingListView.dart';
+import 'package:doctor/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
@@ -16,7 +17,7 @@ class WaitingList extends StatefulWidget {
 
 class _WaitingListState extends State<WaitingList>
     with SingleTickerProviderStateMixin {
-    final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
+  final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
   TabController _tabController;
   @override
   void initState() {
@@ -30,10 +31,12 @@ class _WaitingListState extends State<WaitingList>
       create: (context) => PatientListProvider(),
       child: SideMenu(
         key: _sideMenuKey,
-        menu: Container(child: Text("Drawer"),),
+        menu: Menu(),
         type: SideMenuType.shrinkNSlide,
+        maxMenuWidth: 220,
+        radius: BorderRadius.circular(30),
         child: Scaffold(
-          appBar: CustomAppBar(_tabController, context,_sideMenuKey),
+          appBar: CustomAppBar(_tabController, context, _sideMenuKey),
           body: Column(
             children: [
               Expanded(
@@ -41,22 +44,25 @@ class _WaitingListState extends State<WaitingList>
                   Consumer<PatientListProvider>(
                     builder: (context, patientListProvider, child) {
                       return ListView.builder(
-                        itemCount: patientListProvider.reachedList.length,
-                        itemBuilder: (context, index) {
-                        if (index == 0)
-                          return CurrentPatient(patientListProvider.reachedList[index]);
-                        else
-                          return ReachedListCard(patientListProvider.reachedList[index]);
-                      });
+                          itemCount: patientListProvider.reachedList.length,
+                          itemBuilder: (context, index) {
+                            if (index == 0)
+                              return CurrentPatient(
+                                  patientListProvider.reachedList[index]);
+                            else
+                              return ReachedListCard(
+                                  patientListProvider.reachedList[index]);
+                          });
                     },
                   ),
                   Consumer<PatientListProvider>(
                     builder: (context, patientListProvider, child) {
                       return ListView.builder(
-                        itemCount: patientListProvider.bookingList.length,
-                        itemBuilder: (context, index) {
-                          return BookingListCard(patientListProvider.bookingList[index]);
-                      });
+                          itemCount: patientListProvider.bookingList.length,
+                          itemBuilder: (context, index) {
+                            return BookingListCard(
+                                patientListProvider.bookingList[index]);
+                          });
                     },
                   ),
                 ]),

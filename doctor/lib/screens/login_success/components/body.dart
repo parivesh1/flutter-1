@@ -28,7 +28,9 @@ class Body extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          Spacer(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.2,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: SizedBox(

@@ -22,6 +22,11 @@ class _BookingsScreenState extends State<BookingsScreen>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.chevron_left_outlined),
+          color: Colors.black,
+        ),
         bottom: TabBar(
           controller: _tabController,
           labelColor: Colors.blue[700],
@@ -30,6 +35,8 @@ class _BookingsScreenState extends State<BookingsScreen>
           indicator: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(6)),
               color: Colors.grey[120]),
+          labelStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          unselectedLabelStyle: TextStyle(fontSize: 18),
           tabs: [
             Tab(
               child: Align(
@@ -68,6 +75,9 @@ class _BookingsScreenState extends State<BookingsScreen>
             child: TabBarView(controller: _tabController, children: [
               Column(
                 children: [
+                  SizedBox(
+                    height: 8,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(6),
                     child: GestureDetector(
