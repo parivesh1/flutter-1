@@ -2,12 +2,12 @@ import 'package:doctor/screens/bookings/bookingCardTemplate.dart';
 import 'package:doctor/screens/bookings/bookingsHistoryScreens.dart';
 import 'package:flutter/material.dart';
 
-class BookingsScreen extends StatefulWidget {
+class BookingsHistoryScreen extends StatefulWidget {
   @override
-  State<BookingsScreen> createState() => _BookingsScreenState();
+  State<BookingsHistoryScreen> createState() => _BookingsHistoryScreenState();
 }
 
-class _BookingsScreenState extends State<BookingsScreen>
+class _BookingsHistoryScreenState extends State<BookingsHistoryScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 

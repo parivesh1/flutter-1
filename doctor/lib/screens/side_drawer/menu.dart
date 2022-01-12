@@ -2,7 +2,7 @@ import 'package:doctor/screens/bookings/BookingsScreen.dart';
 import 'package:doctor/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 
-class Menu extends StatelessWidget {
+class SideDrawerMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -36,9 +36,9 @@ class Menu extends StatelessWidget {
           ),
           ListTile(
             onTap: () {},
-            leading: const Icon(Icons.home, size: 20.0, color: Colors.white),
+            leading: const Icon(Icons.home, size: 20.0, color: Colors.black),
             title: const Text("Home"),
-            textColor: Colors.white,
+            tileColor: Colors.white,
             dense: true,
           ),
           ListTile(
@@ -51,9 +51,9 @@ class Menu extends StatelessWidget {
               )
             },
             leading: const Icon(Icons.verified_user,
-                size: 20.0, color: Colors.white),
+                size: 20.0, color: Colors.black),
             title: const Text("Profile"),
-            textColor: Colors.white,
+            tileColor: Colors.white,
             dense: true,
           ),
           ListTile(
@@ -61,21 +61,21 @@ class Menu extends StatelessWidget {
               Navigator.push<void>(
                 context,
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => BookingsScreen(),
+                  builder: (BuildContext context) => BookingsHistoryScreen(),
                 ),
               )
             },
-            leading: const Icon(Icons.history, size: 20.0, color: Colors.white),
-            title: const Text("Bookings History"),
-            textColor: Colors.white,
+            leading: const Icon(Icons.history, size: 20.0, color: Colors.black),
+            title: const Text("Bookings  History"),
+            tileColor: Colors.white,
             dense: true,
           ),
           ListTile(
             onTap: () {},
             leading:
-                const Icon(Icons.settings, size: 20.0, color: Colors.white),
+                const Icon(Icons.settings, size: 20.0, color: Colors.black),
             title: const Text("Settings"),
-            textColor: Colors.white,
+            tileColor: Colors.white,
             dense: true,
           ),
         ],

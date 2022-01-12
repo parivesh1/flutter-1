@@ -2,7 +2,7 @@ import 'package:doctor/CurrentPatient.dart';
 import 'package:doctor/Providers/patientListProvider.dart';
 import 'package:doctor/screens/CustomAppBar.dart';
 import 'package:doctor/screens/bookingListView.dart';
-import 'package:doctor/screens/menu.dart';
+import 'package:doctor/screens/side_drawer/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
@@ -30,10 +30,11 @@ class _WaitingListState extends State<WaitingList>
     return ChangeNotifierProvider<PatientListProvider>(
       create: (context) => PatientListProvider(),
       child: SideMenu(
+        background: Colors.blue,
         key: _sideMenuKey,
-        menu: Menu(),
+        menu: SideDrawerMenu(),
         type: SideMenuType.shrinkNSlide,
-        maxMenuWidth: 220,
+        maxMenuWidth: 200,
         radius: BorderRadius.circular(30),
         child: Scaffold(
           appBar: CustomAppBar(_tabController, context, _sideMenuKey),
