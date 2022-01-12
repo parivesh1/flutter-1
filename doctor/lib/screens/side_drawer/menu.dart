@@ -1,4 +1,5 @@
 import 'package:doctor/screens/bookings/BookingsScreen.dart';
+import 'package:doctor/screens/bookings/bookingsHistoryScreens.dart';
 import 'package:doctor/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 

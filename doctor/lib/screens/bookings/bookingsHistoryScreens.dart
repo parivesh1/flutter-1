@@ -1,91 +1,112 @@
 import 'package:flutter/material.dart';
 
-class BookingsHistoryScreen extends StatelessWidget {
+class BookingsHistoryScreen extends StatefulWidget {
+  @override
+  State<BookingsHistoryScreen> createState() => _BookingsHistoryScreenState();
+}
+
+class _BookingsHistoryScreenState extends State<BookingsHistoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.21,
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 158, 129, 190),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: const Radius.circular(40),
-                    bottomRight: const Radius.circular(40),
-                  ),
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                      Color.fromARGB(255, 92, 204, 255),
-                      Color.fromARGB(255, 158, 129, 190)
-                    ],
-                  )),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Appointments",
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          "Bookings History",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.chevron_left_outlined),
+          color: Colors.black,
+        ),
+      ),
+      body: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.24,
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 158, 129, 190),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: const Radius.circular(40),
+                  bottomRight: const Radius.circular(40),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color.fromARGB(255, 92, 204, 255),
+                    Color.fromARGB(255, 158, 129, 190)
+                  ],
+                )),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Appointments",
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 1, top: 8, bottom: 10),
+                      child: Text(
+                        "June",
                         style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
                             color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 1, top: 8, bottom: 10),
-                        child: Text(
-                          "June",
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          "S",
                           style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w300,
                               color: Colors.white),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "S",
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.white),
-                          ),
-                          Text(
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
                             "6",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "M",
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white),
                           ),
-                          CircleAvatar(
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "M",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: CircleAvatar(
                             child: Text(
                               "7",
                               style: TextStyle(
@@ -95,134 +116,149 @@ class BookingsHistoryScreen extends StatelessWidget {
                             ),
                             radius: 13,
                             backgroundColor: Colors.white,
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "T",
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white),
                           ),
-                          Text(
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "T",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
                             "8",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "W",
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white),
                           ),
-                          Text(
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "W",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
                             "9",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "T",
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white),
                           ),
-                          Text(
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "T",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
                             "10",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "F",
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white),
                           ),
-                          Text(
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "F",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
                             "11",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "S",
-                            style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.white),
                           ),
-                          Text(
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "S",
+                          style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.white),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Text(
                             "12",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
-                          )
-                        ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 19, left: 13.5, right: 13.5, bottom: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(""),
+                      Text(
+                        "Monday  June 7, 2021",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Icon(
+                        Icons.calendar_today_rounded,
+                        color: Colors.white,
+                        size: 15,
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 19, left: 13.5, right: 13.5, bottom: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(""),
-                        Text(
-                          "Monday  June 7, 2021",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        Icon(
-                          Icons.calendar_today_rounded,
-                          color: Colors.white,
-                          size: 15,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-        HistoryCards(1),
-        HistoryCards(2),
-        HistoryCards(3),
-        HistoryCards(4),
-        HistoryCards(5),
-      ],
+                )
+              ],
+            ),
+          ),
+          HistoryCards(1),
+          HistoryCards(2),
+          HistoryCards(3),
+          HistoryCards(4),
+          HistoryCards(5),
+        ],
+      ),
     );
   }
 }
@@ -294,7 +330,7 @@ class HistoryCards extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.17,
+            height: MediaQuery.of(context).size.height * 0.2,
             child: Container(
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 158, 129, 190),

@@ -95,7 +95,7 @@ class _DetailsFormState extends State<DetailsForm> {
                 children: [
                   Text(
                     "Starting Checkup Time:",
-                    style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                    style: TextStyle(fontSize: 10, color: Colors.grey[700]),
                   ),
                   startingSelectedTime != null
                       ? Text(
@@ -131,7 +131,7 @@ class _DetailsFormState extends State<DetailsForm> {
                 children: [
                   Text(
                     "Ending Checkup Time:",
-                    style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                    style: TextStyle(fontSize: 10, color: Colors.grey[700]),
                   ),
                   endingSelectedTime != null
                       ? Text(
