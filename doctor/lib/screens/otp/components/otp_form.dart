@@ -113,16 +113,7 @@ class _OtpFormState extends State<OtpForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) {
-                  return Scaffold(
-                    appBar: AppBar(
-                      title: Text("Verification"),
-                    ),
-                    body: DoctorDetailScreen(),
-                  );
-                },
-              ));
+              Navigator.pushNamed(context, 'docDetails');
             },
           )
         ],

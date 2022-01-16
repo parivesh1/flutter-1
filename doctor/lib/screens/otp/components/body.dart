@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/phone_number.dart';
 import '../../../size_config.dart';
 import 'otp_form.dart';
 
 class Body extends StatelessWidget {
-  final PhoneNumber _phoneNumber;
-  Body(this._phoneNumber);
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(

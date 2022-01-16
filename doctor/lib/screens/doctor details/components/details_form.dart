@@ -242,11 +242,7 @@ class _DetailsFormState extends State<DetailsForm> {
                 }
                 _formKey.currentState.save();
 
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) {
-                    return LoginSuccessScreen();
-                  },
-                ));
+                Navigator.pushNamed(context, 'loginSuccess');
               },
             ),
           ],

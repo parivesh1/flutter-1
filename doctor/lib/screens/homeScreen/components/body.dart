@@ -1,12 +1,12 @@
-import 'package:doctor/CurrentPatient.dart';
+import 'package:doctor/screens/homeScreen/components/CurrentPatient.dart';
 import 'package:doctor/Providers/patientListProvider.dart';
-import 'package:doctor/screens/CustomAppBar.dart';
-import 'package:doctor/screens/bookingListView.dart';
+import 'package:doctor/components/CustomAppBar.dart';
+import 'package:doctor/screens/homeScreen/components/bookingListCard.dart';
+import 'package:doctor/screens/homeScreen/components/ReachedListCard.dart';
 import 'package:doctor/screens/side_drawer/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
-import 'ReachedListView.dart';
 
 class WaitingList extends StatefulWidget {
   WaitingList({Key key}) : super(key: key);
@@ -30,12 +30,12 @@ class _WaitingListState extends State<WaitingList>
     return ChangeNotifierProvider<PatientListProvider>(
       create: (context) => PatientListProvider(),
       child: SideMenu(
-        background: Colors.blue,
+        background: Colors.blue[800],
         key: _sideMenuKey,
         menu: SideDrawerMenu(),
         type: SideMenuType.shrinkNSlide,
-        maxMenuWidth: 200,
-        radius: BorderRadius.circular(30),
+        maxMenuWidth: 275,
+        radius: BorderRadius.circular(60),
         child: Scaffold(
           appBar: CustomAppBar(_tabController, context, _sideMenuKey),
           body: Column(

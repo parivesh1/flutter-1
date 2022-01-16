@@ -51,47 +51,45 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text("Doctor App"),
+        ),
         body: Padding(
-      padding: const EdgeInsets.all(16),
-      child: SingleChildScrollView(
-        child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: _buildname(),
-                ),
-                _buildPhoneNo(),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  child: Text(
-                    "Log In",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                  onPressed: () {
-                    if (!_formKey.currentState.validate()) {
-                      return;
-                    }
-                    _formKey.currentState.save();
-
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) {
-                        return OtpScreen(_phoneNo);
+          padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: _buildname(),
+                    ),
+                    _buildPhoneNo(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      child: Text(
+                        "Log In",
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                      onPressed: () {
+                        if (!_formKey.currentState.validate()) {
+                          return;
+                        }
+                        _formKey.currentState.save();
+                        Navigator.pushNamed(context, 'otp');
                       },
-                    ));
-                  },
-                ),
-                Padding(
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom))
-              ],
-            )),
-      ),
-    ));
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom))
+                  ],
+                )),
+          ),
+        ));
   }
 }
 

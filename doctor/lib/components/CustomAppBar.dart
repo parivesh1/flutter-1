@@ -1,4 +1,4 @@
-import 'package:doctor/screens/PatientForm.dart';
+import 'package:doctor/screens/homeScreen/components/PatientForm.dart';
 import 'package:flutter/material.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 

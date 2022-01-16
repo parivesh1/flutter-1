@@ -1,12 +1,16 @@
-import 'package:doctor/screens/mainScaffold.dart';
+import 'package:doctor/screens/bookings/bookingsHistoryScreens.dart';
+import 'package:doctor/screens/doctor%20details/doctor_detail_screen.dart';
+import 'package:doctor/screens/homeScreen/homeScreen.dart';
+import 'package:doctor/screens/login/LoginScreen.dart';
+import 'package:doctor/screens/login_success/login_success_screen.dart';
+import 'package:doctor/screens/otp/otp_screen.dart';
+import 'package:doctor/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'Providers/patientListProvider.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
@@ -25,7 +29,16 @@ class _MyAppState extends State<MyApp> {
               buttonColor: Colors.blue[600],
               textTheme: ButtonTextTheme.primary,
             )),
+        routes: {
+          'logIn': (context) => LoginScreen(),
+          'otp': (context) => OtpScreen(),
+          'docDetails': (context) => DoctorDetailScreen(),
+          'loginSuccess': (context) => LoginSuccessScreen(),
+          'homeScreen': (context) => homeScreen(),
+          'docProfile': (context) => ProfilePage(),
+          'bookingsHistory': (context) => BookingsHistoryScreen(),
+        },
         home: ChangeNotifierProvider<PatientListProvider>(
-            create: (context) => PatientListProvider(), child: MainScaffold()));
+            create: (context) => PatientListProvider(), child: LoginScreen()));
   }
 }

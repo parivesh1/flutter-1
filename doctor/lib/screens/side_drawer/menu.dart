@@ -1,6 +1,3 @@
-import 'package:doctor/screens/bookings/BookingsScreen.dart';
-import 'package:doctor/screens/bookings/bookingsHistoryScreens.dart';
-import 'package:doctor/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class SideDrawerMenu extends StatelessWidget {
@@ -36,7 +33,7 @@ class SideDrawerMenu extends StatelessWidget {
             ),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, 'homeScreen'),
             leading: const Icon(Icons.home, size: 20.0, color: Colors.black),
             title: const Text("Home"),
             tileColor: Colors.white,
@@ -44,12 +41,7 @@ class SideDrawerMenu extends StatelessWidget {
           ),
           ListTile(
             onTap: () => {
-              Navigator.push<void>(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => ProfilePage(),
-                ),
-              )
+              Navigator.pushNamed(context, 'docProfile'),
             },
             leading: const Icon(Icons.verified_user,
                 size: 20.0, color: Colors.black),
@@ -59,11 +51,9 @@ class SideDrawerMenu extends StatelessWidget {
           ),
           ListTile(
             onTap: () => {
-              Navigator.push<void>(
+              Navigator.pushNamed(
                 context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => BookingsHistoryScreen(),
-                ),
+                'bookingsHistory',
               )
             },
             leading: const Icon(Icons.history, size: 20.0, color: Colors.black),
@@ -78,7 +68,7 @@ class SideDrawerMenu extends StatelessWidget {
             title: const Text("Settings"),
             tileColor: Colors.white,
             dense: true,
-          ),
+          )
         ],
       ),
     );

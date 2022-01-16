@@ -1,5 +1,4 @@
 import 'package:doctor/components/default_button.dart';
-import 'package:doctor/screens/waitinglist.dart';
 import 'package:flutter/material.dart';
 
 import '../../../size_config.dart';
@@ -21,7 +20,7 @@ class Body extends StatelessWidget {
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.08),
           Text(
-            "Login Success",
+            "Login Success!",
             style: TextStyle(
               fontSize: getProportionateScreenWidth(30),
               fontWeight: FontWeight.bold,
@@ -38,8 +37,7 @@ class Body extends StatelessWidget {
               child: DefaultButton(
                 text: "Back to home",
                 press: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => WaitingList()));
+                  Navigator.pushNamed(context, 'homeScreen');
                 },
               ),
             ),
