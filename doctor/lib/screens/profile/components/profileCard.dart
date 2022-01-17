@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class card extends StatefulWidget {
@@ -51,29 +54,51 @@ class _cardState extends State<card> {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                        title: Text(widget.fieldName),
-                        content: TextFormField(
-                          initialValue: widget.fieldvalue,
-                          onChanged: (String value) {
-                            setState(() {
-                              widget.fieldvalue = value;
-                            });
-                          },
-                        ),
-                        actions: <Widget>[
-                          TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text(
-                                "Edit",
-                                style: TextStyle(color: Colors.black),
-                              ))
-                        ],
-                      );
+                      return Platform.isAndroid
+                          ? AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8)),
+                              title: Text(widget.fieldName),
+                              content: TextFormField(
+                                initialValue: widget.fieldvalue,
+                                onChanged: (String value) {
+                                  setState(() {
+                                    widget.fieldvalue = value;
+                                  });
+                                },
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text(
+                                      "Edit",
+                                      style: TextStyle(color: Colors.black),
+                                    ))
+                              ],
+                            )
+                          : CupertinoAlertDialog(
+                              title: Text(widget.fieldName),
+                              actions: <Widget>[
+                                CupertinoDialogAction(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text(
+                                      "Edit",
+                                      style: TextStyle(color: Colors.black),
+                                    ))
+                              ],
+                              content: TextFormField(
+                                initialValue: widget.fieldvalue,
+                                onChanged: (String value) {
+                                  setState(() {
+                                    widget.fieldvalue = value;
+                                  });
+                                },
+                              ),
+                            );
                     });
               },
               icon: Icon(Icons.mode_edit_outline))

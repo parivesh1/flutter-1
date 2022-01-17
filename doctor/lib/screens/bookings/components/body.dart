@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:doctor/screens/bookings/components/historyCard.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -70,7 +73,7 @@ class _BodyState extends State<Body> {
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         setState(() {
                           i = 1;
@@ -107,7 +110,7 @@ class _BodyState extends State<Body> {
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         setState(() {
                           i = 2;
@@ -144,7 +147,7 @@ class _BodyState extends State<Body> {
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
                     ),
-                    GestureDetector(
+                    InkWell(
                         onTap: () {
                           setState(() {
                             i = 3;
@@ -180,7 +183,7 @@ class _BodyState extends State<Body> {
                         fontWeight: FontWeight.w400,
                         color: Colors.white),
                   ),
-                  GestureDetector(
+                  InkWell(
                       onTap: () {
                         setState(() {
                           i = 4;
@@ -215,7 +218,7 @@ class _BodyState extends State<Body> {
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
                     ),
-                    GestureDetector(
+                    InkWell(
                         onTap: () {
                           setState(() {
                             i = 5;
@@ -252,7 +255,7 @@ class _BodyState extends State<Body> {
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         setState(() {
                           i = 6;
@@ -288,7 +291,7 @@ class _BodyState extends State<Body> {
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         setState(() {
                           i = 7;
@@ -331,10 +334,25 @@ class _BodyState extends State<Body> {
                         fontSize: 15,
                         fontWeight: FontWeight.w600),
                   ),
-                  Icon(
-                    Icons.calendar_today_rounded,
-                    color: Colors.white,
-                    size: 15,
+                  IconButton(
+                    icon: Icon(
+                      Icons.calendar_today_rounded,
+                      color: Colors.white,
+                      size: 15,
+                    ),
+                    onPressed: () {
+                      Platform.isAndroid
+                          ? showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2019),
+                                  lastDate: DateTime.now())
+                              .then((pickedDate) {})
+                          : CupertinoDatePicker(
+                              onDateTimeChanged: (value) {},
+                              initialDateTime: DateTime.now(),
+                            );
+                    },
                   ),
                 ],
               ),

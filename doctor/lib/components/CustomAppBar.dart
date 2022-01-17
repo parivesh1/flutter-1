@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:doctor/screens/homeScreen/components/PatientForm.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
@@ -19,10 +22,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             Tab(
               child: Text(
                 "Reached",
-                style: TextStyle(color: Colors.teal),
+                style: TextStyle(color: Colors.teal, fontSize: 18),
               ),
             ),
-            Tab(child: Text("Booking", style: TextStyle(color: Colors.teal)))
+            Tab(
+                child: Text("Booking",
+                    style: TextStyle(color: Colors.teal, fontSize: 18)))
           ],
         ),
         leading: IconButton(
@@ -73,18 +78,24 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
               onPressed: () {
-                showTimePicker(
-                  context: ctx,
-                  initialTime: TimeOfDay.now(),
-                  builder: (context, childWidget) {
-                    return MediaQuery(
-                        data: MediaQuery.of(context).copyWith(
-                            // Using 24-Hour format
-                            alwaysUse24HourFormat: true),
-                        // If you want 12-Hour format, just change alwaysUse24HourFormat to false or remove all the builder argument
-                        child: childWidget);
-                  },
-                );
+                Platform.isAndroid
+                    ? showTimePicker(
+                        context: ctx,
+                        initialTime: TimeOfDay.now(),
+                        builder: (context, childWidget) {
+                          return MediaQuery(
+                              data: MediaQuery.of(context).copyWith(
+                                  // Using 24-Hour format
+                                  alwaysUse24HourFormat: true),
+                              // If you want 12-Hour format, just change alwaysUse24HourFormat to false or remove all the builder argument
+                              child: childWidget);
+                        },
+                      )
+                    : CupertinoDatePicker(
+                        use24hFormat: false,
+                        mode: CupertinoDatePickerMode.time,
+                        onDateTimeChanged: (value) {},
+                      );
               },
               child: Padding(
                 padding: const EdgeInsets.all(4),

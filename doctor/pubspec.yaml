@@ -36,6 +36,7 @@ dependencies:
   flutter_time_picker_spinner: ^2.0.0
   drawerbehavior: ^2.2.1
   shrink_sidemenu: ^2.0.0+2-null-safety
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
