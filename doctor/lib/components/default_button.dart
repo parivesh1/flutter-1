@@ -1,6 +1,8 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
 import '../size_config.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -17,22 +19,34 @@ class DefaultButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       height: getProportionateScreenHeight(56),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          primary: Colors.white,
-          backgroundColor: Colors.blue,
-        ),
-        onPressed: press as void Function(),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: getProportionateScreenWidth(18),
-            color: Colors.white,
-          ),
-        ),
-      ),
+      child: Platform.isAndroid
+          ? TextButton(
+              style: TextButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                primary: Colors.white,
+                backgroundColor: Colors.blue,
+              ),
+              onPressed: press as void Function(),
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                  color: Colors.white,
+                ),
+              ),
+            )
+          : CupertinoButton(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.blue,
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: press as void Function()),
     );
   }
 }

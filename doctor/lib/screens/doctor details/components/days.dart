@@ -39,7 +39,7 @@ class _DaysState extends State<Days> {
         borderRadius: BorderRadius.circular(30.0),
         gradient: LinearGradient(
           begin: Alignment.topLeft,
-          colors: [const Color(0xFFE55CE4), const Color(0xFFBB75FB)],
+          colors: [Color(0xff457fca), Color(0xff5691c8)],
           tileMode: TileMode.repeated, // repeats the gradient over the canvas
         ),
       ),
