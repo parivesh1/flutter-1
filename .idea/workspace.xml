@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="82d4c539-6051-4b8b-a1a5-5e32b1e3f56b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/doctor/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/components/CustomAppBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/components/CustomAppBar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/bookings/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/bookings/components/body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/bookings/components/showBottomSheet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/bookings/components/showBottomSheet.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/doctor details/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/doctor details/components/body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/doctor details/components/days.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/doctor details/components/days.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/doctor details/components/details_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/doctor details/components/details_form.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/doctor details/doctor_detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/doctor details/doctor_detail_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/login/LoginScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/login/LoginScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/login_success/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/login_success/components/body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/login_success/login_success_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/login_success/login_success_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/otp/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/otp/components/body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/otp/components/otp_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/otp/components/otp_form.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/otp/otp_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/otp/otp_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doctor/lib/screens/profile/components/profileCard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/lib/screens/profile/components/profileCard.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="23zjFHdENjrjG8lpG3fle5ymLIZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/doctor/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flutter.main.dart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82d4c539-6051-4b8b-a1a5-5e32b1e3f56b" name="Default Changelist" comment="" />
+      <created>1642743704016</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642743704016</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1642786859220">
+      <screen x="0" y="25" width="1440" height="794" />
+    </state>
+    <state x="184" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.794@0.25.1440.794" timestamp="1642786859220" />
+    <state x="184" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.799@0.25.1440.799" timestamp="1642744623282" />
+    <state x="120" y="145" width="1200" height="565" key="DiffContextDialog" timestamp="1642874889657">
+      <screen x="0" y="25" width="1440" height="799" />
+    </state>
+    <state x="120" y="145" width="1200" height="565" key="DiffContextDialog/0.25.1440.799@0.25.1440.799" timestamp="1642874889657" />
+    <state width="1358" height="118" key="GridCell.Tab.0.bottom" timestamp="1642885460053">
+      <screen x="0" y="25" width="1440" height="797" />
+    </state>
+    <state width="1358" height="100" key="GridCell.Tab.0.bottom/0.25.1440.794@0.25.1440.794" timestamp="1642787198955" />
+    <state width="1358" height="118" key="GridCell.Tab.0.bottom/0.25.1440.797@0.25.1440.797" timestamp="1642885460053" />
+    <state width="679" height="280" key="GridCell.Tab.0.bottom/0.25.1440.799@0.25.1440.799" timestamp="1642874407134" />
+    <state width="1358" height="89" key="GridCell.Tab.0.bottom/0.25.1440.801@0.25.1440.801" timestamp="1642794318366" />
+    <state width="1358" height="118" key="GridCell.Tab.0.center" timestamp="1642885460052">
+      <screen x="0" y="25" width="1440" height="797" />
+    </state>
+    <state width="1358" height="100" key="GridCell.Tab.0.center/0.25.1440.794@0.25.1440.794" timestamp="1642787198954" />
+    <state width="1358" height="118" key="GridCell.Tab.0.center/0.25.1440.797@0.25.1440.797" timestamp="1642885460052" />
+    <state width="679" height="280" key="GridCell.Tab.0.center/0.25.1440.799@0.25.1440.799" timestamp="1642874407133" />
+    <state width="1358" height="89" key="GridCell.Tab.0.center/0.25.1440.801@0.25.1440.801" timestamp="1642794318365" />
+    <state width="1358" height="118" key="GridCell.Tab.0.left" timestamp="1642885460052">
+      <screen x="0" y="25" width="1440" height="797" />
+    </state>
+    <state width="1358" height="100" key="GridCell.Tab.0.left/0.25.1440.794@0.25.1440.794" timestamp="1642787198954" />
+    <state width="1358" height="118" key="GridCell.Tab.0.left/0.25.1440.797@0.25.1440.797" timestamp="1642885460052" />
+    <state width="679" height="280" key="GridCell.Tab.0.left/0.25.1440.799@0.25.1440.799" timestamp="1642874407133" />
+    <state width="1358" height="89" key="GridCell.Tab.0.left/0.25.1440.801@0.25.1440.801" timestamp="1642794318364" />
+    <state width="1358" height="118" key="GridCell.Tab.0.right" timestamp="1642885460052">
+      <screen x="0" y="25" width="1440" height="797" />
+    </state>
+    <state width="1358" height="100" key="GridCell.Tab.0.right/0.25.1440.794@0.25.1440.794" timestamp="1642787198955" />
+    <state width="1358" height="118" key="GridCell.Tab.0.right/0.25.1440.797@0.25.1440.797" timestamp="1642885460052" />
+    <state width="679" height="280" key="GridCell.Tab.0.right/0.25.1440.799@0.25.1440.799" timestamp="1642874407134" />
+    <state width="1358" height="89" key="GridCell.Tab.0.right/0.25.1440.801@0.25.1440.801" timestamp="1642794318365" />
+    <state x="229" y="63" key="SettingsEditor" timestamp="1642786663259">
+      <screen x="0" y="25" width="1440" height="794" />
+    </state>
+    <state x="229" y="63" key="SettingsEditor/0.25.1440.794@0.25.1440.794" timestamp="1642786663259" />
+    <state x="229" y="63" key="SettingsEditor/0.25.1440.797@0.25.1440.797" timestamp="1642786463999" />
+    <state x="229" y="63" key="SettingsEditor/0.25.1440.799@0.25.1440.799" timestamp="1642743943636" />
+  </component>
+</project>
