@@ -23,6 +23,7 @@ class DoctorDetailScreen extends StatelessWidget {
             child: Body(),
             navigationBar: CupertinoNavigationBar(
               middle: Text("Verification"),
+              backgroundColor: Colors.blue,
             ),
           );
   }

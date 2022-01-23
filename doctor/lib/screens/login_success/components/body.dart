@@ -19,21 +19,21 @@ class Body extends StatelessWidget {
             width: SizeConfig.screenWidth,
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.08),
-          Text(
+          Material(child: Text(
             "Login Success!",
             style: TextStyle(
               fontSize: getProportionateScreenWidth(30),
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
-          ),
+          ),),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.2,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: SizedBox(
-              width: SizeConfig.screenWidth * 0.6,
+              width: SizeConfig.screenWidth * 0.7,
               child: DefaultButton(
                 text: "Back to home",
                 press: () {

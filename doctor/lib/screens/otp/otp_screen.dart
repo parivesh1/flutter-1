@@ -22,6 +22,7 @@ class OtpScreen extends StatelessWidget {
             child: Body(),
             navigationBar: CupertinoNavigationBar(
               middle: Text("OTP Verification"),
+              backgroundColor: Colors.blue,
             ),
           );
   }

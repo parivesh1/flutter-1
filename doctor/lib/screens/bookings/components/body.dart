@@ -12,6 +12,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   int i = 2;
   TimeOfDay time = TimeOfDay.now();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -80,18 +81,22 @@ class _BodyState extends State<Body> {
                         });
                       },
                       child: i != 1
-                          ? Text(
-                              "6",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
+                          ? CircleAvatar(
+                              child: Text(
+                                "6",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white),
+                              ),
+                              radius: 13,
+                              backgroundColor: Colors.transparent,
                             )
                           : CircleAvatar(
                               child: Text(
                                 "6",
                                 style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Color.fromARGB(255, 158, 129, 190)),
                               ),
@@ -111,31 +116,35 @@ class _BodyState extends State<Body> {
                           color: Colors.white),
                     ),
                     InkWell(
-                      onTap: () {
-                        setState(() {
-                          i = 2;
-                        });
-                      },
-                      child: i == 2
-                          ? CircleAvatar(
-                              child: Text(
-                                "7",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromARGB(255, 158, 129, 190)),
-                              ),
-                              radius: 13,
-                              backgroundColor: Colors.white,
-                            )
-                          : Text(
-                              "7",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                    )
+                        onTap: () {
+                          setState(() {
+                            i = 2;
+                          });
+                        },
+                        child: i == 2
+                            ? CircleAvatar(
+                                child: Text(
+                                  "7",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      color:
+                                          Color.fromARGB(255, 158, 129, 190)),
+                                ),
+                                radius: 13,
+                                backgroundColor: Colors.white,
+                              )
+                            : CircleAvatar(
+                                child: Text(
+                                  "7",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ),
+                                radius: 13,
+                                backgroundColor: Colors.transparent,
+                              ))
                   ],
                 ),
                 Column(
@@ -154,18 +163,22 @@ class _BodyState extends State<Body> {
                           });
                         },
                         child: i != 3
-                            ? Text(
-                                "8",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
+                            ? CircleAvatar(
+                                child: Text(
+                                  "8",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ),
+                                radius: 13,
+                                backgroundColor: Colors.transparent,
                               )
                             : CircleAvatar(
                                 child: Text(
                                   "8",
                                   style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       color:
                                           Color.fromARGB(255, 158, 129, 190)),
@@ -190,18 +203,22 @@ class _BodyState extends State<Body> {
                         });
                       },
                       child: i != 4
-                          ? Text(
-                              "9",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
+                          ? CircleAvatar(
+                              child: Text(
+                                "9",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white),
+                              ),
+                              radius: 13,
+                              backgroundColor: Colors.transparent,
                             )
                           : CircleAvatar(
                               child: Text(
                                 "9",
                                 style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Color.fromARGB(255, 158, 129, 190)),
                               ),
@@ -225,18 +242,22 @@ class _BodyState extends State<Body> {
                           });
                         },
                         child: i != 5
-                            ? Text(
-                                "10",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
+                            ? CircleAvatar(
+                                child: Text(
+                                  "10",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ),
+                                radius: 13,
+                                backgroundColor: Colors.transparent,
                               )
                             : CircleAvatar(
                                 child: Text(
                                   "10",
                                   style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       color:
                                           Color.fromARGB(255, 158, 129, 190)),
@@ -262,12 +283,16 @@ class _BodyState extends State<Body> {
                         });
                       },
                       child: i != 6
-                          ? Text(
-                              "11",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
+                          ? CircleAvatar(
+                              child: Text(
+                                "11",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white),
+                              ),
+                              radius: 13,
+                              backgroundColor: Colors.transparent,
                             )
                           : CircleAvatar(
                               radius: 13,
@@ -275,7 +300,7 @@ class _BodyState extends State<Body> {
                               child: Text(
                                 "11",
                                 style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Color.fromARGB(255, 158, 129, 190)),
                               )),
@@ -298,12 +323,16 @@ class _BodyState extends State<Body> {
                         });
                       },
                       child: i != 7
-                          ? Text(
-                              "12",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
+                          ? CircleAvatar(
+                              child: Text(
+                                "12",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white),
+                              ),
+                              radius: 13,
+                              backgroundColor: Colors.transparent,
                             )
                           : CircleAvatar(
                               radius: 13,
@@ -311,7 +340,7 @@ class _BodyState extends State<Body> {
                               child: Text(
                                 "12",
                                 style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Color.fromARGB(255, 158, 129, 190)),
                               )),
@@ -331,14 +360,14 @@ class _BodyState extends State<Body> {
                     "Monday  June 7, 2021",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
+                        fontSize: 20,
                         fontWeight: FontWeight.w600),
                   ),
                   IconButton(
                     icon: Icon(
                       Icons.calendar_today_rounded,
                       color: Colors.white,
-                      size: 15,
+                      size: 20,
                     ),
                     onPressed: () {
                       Platform.isAndroid

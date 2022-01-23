@@ -11,13 +11,13 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: SizeConfig.screenHeight * 0.03,
+            height: MediaQuery.of(context).padding.top + MediaQuery.of(context).size.height * 0.03,
           ),
-          Text(
+          Material(child: Text(
             "Details",
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
-          ),
+          ),),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: DetailsForm(),

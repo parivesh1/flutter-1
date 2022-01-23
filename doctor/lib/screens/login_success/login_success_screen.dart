@@ -21,6 +21,7 @@ class LoginSuccessScreen extends StatelessWidget {
             child: Body(),
             navigationBar: CupertinoNavigationBar(
               middle: Text("Login Success"),
+              backgroundColor: Colors.blue,
             ),
           );
   }

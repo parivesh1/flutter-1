@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   TabController tabController;
   BuildContext ctx;
   final GlobalKey<SideMenuState> _sideMenuKey;
+
   CustomAppBar(this.tabController, this.ctx, this._sideMenuKey);
 
   @override
@@ -91,11 +92,31 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                               child: childWidget);
                         },
                       )
-                    : CupertinoDatePicker(
-                        use24hFormat: false,
-                        mode: CupertinoDatePickerMode.time,
-                        onDateTimeChanged: (value) {},
-                      );
+                    : showCupertinoModalPopup(
+                        context: context,
+                        builder: (_) => Container(
+                              height: 500,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 400,
+                                    child: CupertinoDatePicker(
+                                        mode: CupertinoDatePickerMode.time,
+                                        use24hFormat: true,
+                                        initialDateTime: DateTime.now(),
+                                        onDateTimeChanged: (val) {}),
+                                  ),
+
+                                  // Close the modal
+                                  CupertinoButton(
+                                    child: const Text('OK'),
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(),
+                                  )
+                                ],
+                              ),
+                            ));
               },
               child: Padding(
                 padding: const EdgeInsets.all(4),

@@ -18,7 +18,7 @@ class _DetailsFormState extends State<DetailsForm> {
   TextEditingController clinicNameController = new TextEditingController();
   TextEditingController specializationController = new TextEditingController();
   TextEditingController degreeController = new TextEditingController();
-  TextEditingController adressController = new TextEditingController();
+  TextEditingController addressController = new TextEditingController();
   TextEditingController feesController = new TextEditingController();
   TextEditingController emailController = new TextEditingController();
   TextEditingController startingCheckupTimeController =
@@ -36,7 +36,7 @@ class _DetailsFormState extends State<DetailsForm> {
       _startingCheckupTime,
       _endingCheckupTime;
 
-  Widget _buildclinicName() {
+  Widget _buildClinicName() {
     return Platform.isAndroid
         ? TextFormField(
             autofocus: true,
@@ -66,7 +66,7 @@ class _DetailsFormState extends State<DetailsForm> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 1, color: Colors.black),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
           );
   }
 
@@ -100,11 +100,11 @@ class _DetailsFormState extends State<DetailsForm> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 1, color: Colors.black),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
           );
   }
 
-  Widget _builddegree() {
+  Widget _buildDegree() {
     return Platform.isAndroid
         ? TextFormField(
             autofocus: true,
@@ -133,11 +133,11 @@ class _DetailsFormState extends State<DetailsForm> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 1, color: Colors.black),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
           );
   }
 
-  Widget _buildfees() {
+  Widget _buildFees() {
     return Platform.isAndroid
         ? TextFormField(
             autofocus: true,
@@ -166,7 +166,7 @@ class _DetailsFormState extends State<DetailsForm> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 1, color: Colors.black),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
           );
   }
 
@@ -213,25 +213,47 @@ class _DetailsFormState extends State<DetailsForm> {
             textCapitalization: TextCapitalization.words,
             placeholder: "Starting Checkup Time:",
             placeholderStyle: TextStyle(fontSize: 16),
+            showCursor: false,
             onSubmitted: (value) {
               if (value != null) {
                 _startingCheckupTime = value;
               }
             },
-            onTap: () {
-              CupertinoDatePicker(
-                mode: CupertinoDatePickerMode.time,
-                use24hFormat: false,
-                onDateTimeChanged: (value) {
-                  startingCheckupTimeController.text = value.toString();
-                },
-              );
+            onTap: () => {
+              showCupertinoModalPopup(
+                  context: context,
+                  builder: (_) => Container(
+                        height: 500,
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 400,
+                              child: CupertinoDatePicker(
+                                mode: CupertinoDatePickerMode.time,
+                                  initialDateTime: DateTime.now(),
+                                  onDateTimeChanged: (val) {
+
+                                      startingCheckupTimeController.text =
+                                          "${val.hour}:${val.minute}";
+
+                                  }),
+                            ),
+
+                            // Close the modal
+                            CupertinoButton(
+                              child: const Text('OK'),
+                              onPressed: () => Navigator.of(context).pop(),
+                            )
+                          ],
+                        ),
+                      ))
             },
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 1, color: Colors.black),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
           );
   }
 
@@ -272,6 +294,7 @@ class _DetailsFormState extends State<DetailsForm> {
           )
         : CupertinoTextField(
             autofocus: true,
+            showCursor: false,
             controller: endingCheckupTimeController,
             suffix: Icon(Icons.timelapse_sharp),
             textCapitalization: TextCapitalization.words,
@@ -283,23 +306,44 @@ class _DetailsFormState extends State<DetailsForm> {
               }
             },
             onTap: () {
-              CupertinoDatePicker(
-                use24hFormat: false,
-                mode: CupertinoDatePickerMode.time,
-                onDateTimeChanged: (value) {
-                  endingCheckupTimeController.text = value.toString();
-                },
-              );
+              showCupertinoModalPopup(
+                  context: context,
+                  builder: (_) => Container(
+                    height: 500,
+                    color: const Color.fromARGB(255, 255, 255, 255),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 400,
+                          child: CupertinoDatePicker(
+                              mode: CupertinoDatePickerMode.time,
+                              initialDateTime: DateTime.now(),
+                              onDateTimeChanged: (val) {
+
+                                  endingCheckupTimeController.text =
+                                  "${val.hour}:${val.minute}";
+
+                              }),
+                        ),
+
+                        // Close the modal
+                        CupertinoButton(
+                          child: const Text('OK'),
+                          onPressed: () => Navigator.of(context).pop(),
+                        )
+                      ],
+                    ),
+                  ));
             },
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 1, color: Colors.black),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
           );
   }
 
-  Widget _buildaddress() {
+  Widget _buildAddress() {
     return Platform.isAndroid
         ? TextFormField(
             autofocus: true,
@@ -315,7 +359,7 @@ class _DetailsFormState extends State<DetailsForm> {
           )
         : CupertinoTextField(
             autofocus: true,
-            controller: adressController,
+            controller: addressController,
             suffix: Icon(Icons.home_repair_service_rounded),
             textCapitalization: TextCapitalization.words,
             placeholder: "Address",
@@ -329,11 +373,11 @@ class _DetailsFormState extends State<DetailsForm> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 1, color: Colors.black),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
           );
   }
 
-  Widget _buildemail() {
+  Widget _buildEmail() {
     return Platform.isAndroid
         ? TextFormField(
             autofocus: true,
@@ -363,7 +407,7 @@ class _DetailsFormState extends State<DetailsForm> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 1, color: Colors.black),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
           );
     ;
   }
@@ -377,7 +421,7 @@ class _DetailsFormState extends State<DetailsForm> {
             SizedBox(
               height: 16,
             ),
-            _buildclinicName(),
+            _buildClinicName(),
             SizedBox(
               height: 16,
             ),
@@ -385,19 +429,19 @@ class _DetailsFormState extends State<DetailsForm> {
             SizedBox(
               height: 16,
             ),
-            _builddegree(),
+            _buildDegree(),
             SizedBox(
               height: 16,
             ),
-            _buildfees(),
+            _buildFees(),
             SizedBox(
               height: 16,
             ),
-            _buildaddress(),
+            _buildAddress(),
             SizedBox(
               height: 16,
             ),
-            _buildemail(),
+            _buildEmail(),
             SizedBox(
               height: 16,
             ),
@@ -409,15 +453,21 @@ class _DetailsFormState extends State<DetailsForm> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Text(
-                "Select Days on which you take Appointments:",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: Material(
+                child: Text(
+                  "Select Days on which you take Appointments:",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.none),
+                ),
               ),
             ),
             Days(),
             SizedBox(
-              height: 8,
+              height: 16,
             ),
             Platform.isAndroid
                 ? ElevatedButton(
@@ -439,6 +489,7 @@ class _DetailsFormState extends State<DetailsForm> {
                       "Submit",
                       style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
+                    color: Colors.blue,
                     onPressed: () {
                       if (!_formKey.currentState.validate()) {
                         return;
@@ -496,7 +547,7 @@ InputDecoration getDecoration(String title, IconData data) {
     // If  you are using latest version of flutter then lable text and hint text shown like this
     // if you r using flutter less then 1.20.* then maybe this is not working properly
     floatingLabelBehavior: FloatingLabelBehavior.always,
-    contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+    contentPadding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
     suffixIcon: Icon(data),
   );
 }

@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 Future<dynamic> bottomSheet(
     BuildContext context, String name, int age, int phoneNumber) {
   return showModalBottomSheet(
+    backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return Container(
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(35.0),
+            child: Container(
           height: MediaQuery.of(context).size.height * 0.2,
+          width: double.infinity,
           decoration: BoxDecoration(
             color: Color.fromARGB(255, 158, 129, 190),
-            borderRadius: BorderRadius.only(
-              topLeft: const Radius.circular(35),
-              topRight: const Radius.circular(35),
-            ),
           ),
           child: Padding(
             padding: const EdgeInsets.all(12),
@@ -106,6 +106,6 @@ Future<dynamic> bottomSheet(
               ],
             ),
           ),
-        );
+        ));
       });
 }

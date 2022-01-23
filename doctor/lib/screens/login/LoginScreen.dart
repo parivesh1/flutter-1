@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:doctor/screens/otp/otp_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -17,10 +15,9 @@ class _LoginScreenState extends State<LoginScreen> {
   String _name;
   PhoneNumber _phoneNo;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  Widget _buildname() {
-    if (Platform.isAndroid) {
-      return TextFormField(
+  Widget _buildName() {
+    return Platform.isAndroid ?
+        TextFormField(
         autofocus: true,
         decoration: InputDecoration(
             labelText: 'Name', hintStyle: TextStyle(fontSize: 16)),
@@ -31,24 +28,23 @@ class _LoginScreenState extends State<LoginScreen> {
           return null;
         },
         onSaved: (newValue) => _name = newValue,
-      );
-    } else {
-      return CupertinoTextField(
+      ) :
+       CupertinoTextField(
+         decoration: BoxDecoration(color: Colors.grey[100], borderRadius: BorderRadius.circular(5), border: Border.all(width: 0.6)),
+         placeholder: "Name",
         autofocus: true,
         clearButtonMode: OverlayVisibilityMode.editing,
         textCapitalization: TextCapitalization.words,
-        placeholder: "Name",
-        placeholderStyle: TextStyle(fontSize: 16),
         onChanged: (value) {
           _name = value;
         },
       );
     }
-  }
 
   Widget _buildPhoneNo() {
-    return Padding(
-      padding: const EdgeInsets.all(16),
+    return Card(
+      color: Colors.grey[50],
+      elevation: 0,
       child: IntlPhoneField(
         initialCountryCode: "IN",
         decoration: InputDecoration(
@@ -67,11 +63,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final appBar = AppBar(
+      title: Text("Doctor's App"),
+    );
+
     return Platform.isAndroid
         ? Scaffold(
-            appBar: AppBar(
-              title: Text("Doctor App"),
-            ),
+            appBar: appBar,
             body: Padding(
               padding: const EdgeInsets.all(16),
               child: SingleChildScrollView(
@@ -82,14 +81,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(5),
-                          child: _buildname(),
+                          child: _buildName(),
                         ),
-                        _buildPhoneNo(),
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: _buildPhoneNo(),
+                        ),
                         SizedBox(
                           height: 20,
                         ),
-                        Platform.isAndroid
-                            ? ElevatedButton(
+                        ElevatedButton(
                                 child: Text(
                                   "Log In",
                                   style: TextStyle(
@@ -102,20 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   _formKey.currentState.save();
                                   Navigator.pushNamed(context, 'otp');
                                 },
-                              )
-                            : CupertinoButton(
-                                child: Text(
-                                  "Log In",
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.white),
-                                ),
-                                onPressed: () {
-                                  if (!_formKey.currentState.validate()) {
-                                    return;
-                                  }
-                                  _formKey.currentState.save();
-                                  Navigator.pushNamed(context, 'otp');
-                                }),
+                              ),
                         Padding(
                             padding: EdgeInsets.only(
                                 bottom:
@@ -126,7 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ))
         : CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
-              middle: Text("Doctor App"),
+              middle: Text("Doctor App", style: TextStyle(color: Colors.white),),
+              backgroundColor: Colors.blue,
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -138,13 +127,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(5),
-                          child: _buildname(),
+                          child: _buildName() ,
                         ),
-                        _buildPhoneNo(),
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: _buildPhoneNo(),
+                        ),
                         SizedBox(
                           height: 20,
                         ),
                         CupertinoButton(
+                          color: Colors.blue,
                             child: Text(
                               "Log In",
                               style:
@@ -163,8 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     MediaQuery.of(context).viewInsets.bottom))
                       ],
                     )),
-              ),
-            ),
+              )),
+
           );
   }
 }
