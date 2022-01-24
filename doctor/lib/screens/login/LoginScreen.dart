@@ -30,10 +30,12 @@ class _LoginScreenState extends State<LoginScreen> {
         onSaved: (newValue) => _name = newValue,
       ) :
        CupertinoTextField(
-         decoration: BoxDecoration(color: Colors.grey[100], borderRadius: BorderRadius.circular(5), border: Border.all(width: 0.6)),
-         placeholder: "Name",
+        decoration: BoxDecoration(color: Colors.grey[100], borderRadius: BorderRadius.circular(5), border: Border.all(width: 0.6)),
+        padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
+        placeholder: "Name",
+        placeholderStyle: TextStyle(fontSize: 16, color: Colors.grey[500]),
         autofocus: true,
-        clearButtonMode: OverlayVisibilityMode.editing,
+        clearButtonMode: OverlayVisibilityMode.always,
         textCapitalization: TextCapitalization.words,
         onChanged: (value) {
           _name = value;
