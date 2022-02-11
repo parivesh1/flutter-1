@@ -1,6 +1,6 @@
-import 'package:doctor/components/default_button.dart';
 import 'package:flutter/material.dart';
 
+import '../../../components/default_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
@@ -44,10 +44,10 @@ class _OtpFormState extends State<OtpForm> {
   Widget build(BuildContext context) {
     bool pin_added = false;
     return Card(
-    elevation: 0,
+      elevation: 0,
       color: Colors.grey[50],
       child: Form(
-      child: Column(
+          child: Column(
         children: [
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           Row(
@@ -119,7 +119,7 @@ class _OtpFormState extends State<OtpForm> {
             },
           )
         ],
-    )),
+      )),
     );
   }
 }

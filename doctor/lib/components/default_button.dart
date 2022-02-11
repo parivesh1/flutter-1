@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../size_config.dart';
 
@@ -30,7 +31,7 @@ class DefaultButton extends StatelessWidget {
               onPressed: press as void Function(),
               child: Text(
                 text,
-                style: TextStyle(
+                style: GoogleFonts.publicSans(
                   fontSize: getProportionateScreenWidth(18),
                   color: Colors.white,
                 ),

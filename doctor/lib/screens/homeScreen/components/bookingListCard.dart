@@ -1,11 +1,13 @@
 import 'package:doctor/Providers/patientListProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 Widget BookingListCard(PatientModel p) {
   return Consumer<PatientListProvider>(
     builder: (context, value, child) {
       return Card(
+        margin: EdgeInsets.all(6),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -19,11 +21,11 @@ Widget BookingListCard(PatientModel p) {
                     children: [
                       Text(
                         "${p.name}",
-                        style: TextStyle(fontSize: 15),
+                        style: GoogleFonts.nunito(fontSize: 16),
                       ),
                       Text(
-                        "${p.gender} ,${p.age}",
-                        style: TextStyle(
+                        "${p.gender}, ${p.age}",
+                        style: GoogleFonts.mulish(
                             fontSize: 12, color: Colors.black.withOpacity(0.6)),
                       ),
                     ],
@@ -50,15 +52,18 @@ Widget BookingListCard(PatientModel p) {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Time left : ${p.minutesLeft} mins"),
+                  Text(
+                    "Time left : ${p.minutesLeft} mins",
+                    style: GoogleFonts.mulish(),
+                  ),
                   TextButton(
                       onPressed: () {
                         value.reached(p.name);
                       },
-                      child: Text("Reached"),
+                      child: Text("Reached",
+                          style: GoogleFonts.mulish(fontSize: 16)),
                       style: TextButton.styleFrom(
                         minimumSize: Size(0, 0),
-                        padding: EdgeInsets.all(15),
                         side: BorderSide(width: 0.3, color: Colors.black),
                       ))
                 ],

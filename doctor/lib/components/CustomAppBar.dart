@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:doctor/screens/homeScreen/components/PatientForm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -19,16 +20,17 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         backgroundColor: Colors.white,
         bottom: TabBar(
           controller: tabController,
+          labelColor: Color.fromARGB(255, 22, 111, 193),
+          unselectedLabelColor: Colors.grey,
+          labelStyle:
+              GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w600),
+          unselectedLabelStyle:
+              GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w400),
           tabs: [
             Tab(
-              child: Text(
-                "Reached",
-                style: TextStyle(color: Colors.teal, fontSize: 18),
-              ),
+              text: "Reached",
             ),
-            Tab(
-                child: Text("Booking",
-                    style: TextStyle(color: Colors.teal, fontSize: 18)))
+            Tab(text: "Booking")
           ],
         ),
         leading: IconButton(
@@ -43,46 +45,47 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               color: Colors.black,
             )),
         actions: [
-          Builder(
-            builder: (context) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: ctx,
-                      builder: (BuildContext context) {
-                        return PatientForm();
-                      },
-                    );
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: TextButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: ctx,
+                  builder: (BuildContext context) {
+                    return PatientForm();
                   },
-                  child: Container(
-                    child: Text(
-                      "Add Patient",
-                      style: TextStyle(color: Colors.white, fontSize: 17),
-                    ),
-                  ),
-                  style: TextButton.styleFrom(
-                      minimumSize: Size(0, 0),
-                      padding: EdgeInsets.all(5),
-                      backgroundColor: Colors.black,
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(25)))),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  "Add Patient",
+                  style: GoogleFonts.nunito(color: Colors.black, fontSize: 18),
                 ),
-              );
-            },
+              ),
+              style: TextButton.styleFrom(
+                  minimumSize: Size(0, 0),
+                  padding: EdgeInsets.all(5),
+                  backgroundColor: Colors.white,
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.all(Radius.circular(25)))),
+            ),
+          ),
+          SizedBox(
+            width: 10,
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextButton(
               onPressed: () {
                 Platform.isAndroid
                     ? showTimePicker(
                         context: ctx,
-                        initialTime: TimeOfDay.now(),
+                        initialTime: TimeOfDay(hour: 0, minute: 15),
+                        initialEntryMode: TimePickerEntryMode.input,
                         builder: (context, childWidget) {
                           return MediaQuery(
                               data: MediaQuery.of(context).copyWith(
@@ -119,21 +122,24 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                             ));
               },
               child: Padding(
-                padding: const EdgeInsets.all(4),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   "Delay",
-                  style: TextStyle(color: Colors.white),
+                  style: GoogleFonts.nunito(color: Colors.black, fontSize: 18),
                 ),
               ),
               style: TextButton.styleFrom(
                   minimumSize: Size(0, 0),
                   padding: EdgeInsets.all(5),
                   primary: Colors.white,
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       side: BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.all(Radius.circular(25)))),
             ),
+          ),
+          SizedBox(
+            width: 10,
           ),
         ],
         title: Row(
@@ -148,7 +154,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             ),
             Text(
               "Quiky",
-              style: TextStyle(color: Colors.black),
+              style: GoogleFonts.mulish(
+                  color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ],
         ),

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:doctor/screens/bookings/components/historyCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -27,11 +28,12 @@ class _BodyState extends State<Body> {
                 bottomRight: const Radius.circular(40),
               ),
               gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                stops: [0.7, 1],
                 colors: [
+                  Color.fromARGB(255, 158, 129, 190),
                   Color.fromARGB(255, 92, 204, 255),
-                  Color.fromARGB(255, 158, 129, 190)
                 ],
               )),
           child: Column(children: [
@@ -40,7 +42,7 @@ class _BodyState extends State<Body> {
               children: [
                 Text(
                   "Appointments",
-                  style: TextStyle(
+                  style: GoogleFonts.nunito(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: Colors.white),
@@ -54,7 +56,7 @@ class _BodyState extends State<Body> {
                   padding: const EdgeInsets.only(left: 1, top: 8, bottom: 10),
                   child: Text(
                     "June",
-                    style: TextStyle(
+                    style: GoogleFonts.nunito(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                         color: Colors.white),
@@ -69,7 +71,7 @@ class _BodyState extends State<Body> {
                   children: [
                     Text(
                       "S",
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                           fontSize: 10,
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
@@ -84,7 +86,7 @@ class _BodyState extends State<Body> {
                           ? CircleAvatar(
                               child: Text(
                                 "6",
-                                style: TextStyle(
+                                style: GoogleFonts.nunito(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.white),
@@ -95,7 +97,7 @@ class _BodyState extends State<Body> {
                           : CircleAvatar(
                               child: Text(
                                 "6",
-                                style: TextStyle(
+                                style: GoogleFonts.nunito(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Color.fromARGB(255, 158, 129, 190)),
@@ -110,7 +112,7 @@ class _BodyState extends State<Body> {
                   children: [
                     Text(
                       "M",
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
@@ -125,7 +127,7 @@ class _BodyState extends State<Body> {
                             ? CircleAvatar(
                                 child: Text(
                                   "7",
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunito(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       color:
@@ -137,7 +139,7 @@ class _BodyState extends State<Body> {
                             : CircleAvatar(
                                 child: Text(
                                   "7",
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunito(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white),
@@ -151,7 +153,7 @@ class _BodyState extends State<Body> {
                   children: [
                     Text(
                       "T",
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
@@ -166,7 +168,7 @@ class _BodyState extends State<Body> {
                             ? CircleAvatar(
                                 child: Text(
                                   "8",
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunito(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white),
@@ -177,7 +179,7 @@ class _BodyState extends State<Body> {
                             : CircleAvatar(
                                 child: Text(
                                   "8",
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunito(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       color:
@@ -191,7 +193,7 @@ class _BodyState extends State<Body> {
                 Column(children: [
                   Text(
                     "W",
-                    style: TextStyle(
+                    style: GoogleFonts.nunito(
                         fontSize: 10,
                         fontWeight: FontWeight.w400,
                         color: Colors.white),
@@ -206,7 +208,7 @@ class _BodyState extends State<Body> {
                           ? CircleAvatar(
                               child: Text(
                                 "9",
-                                style: TextStyle(
+                                style: GoogleFonts.nunito(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.white),
@@ -217,7 +219,7 @@ class _BodyState extends State<Body> {
                           : CircleAvatar(
                               child: Text(
                                 "9",
-                                style: TextStyle(
+                                style: GoogleFonts.nunito(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Color.fromARGB(255, 158, 129, 190)),
@@ -230,7 +232,7 @@ class _BodyState extends State<Body> {
                   children: [
                     Text(
                       "T",
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
@@ -245,7 +247,7 @@ class _BodyState extends State<Body> {
                             ? CircleAvatar(
                                 child: Text(
                                   "10",
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunito(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white),
@@ -256,7 +258,7 @@ class _BodyState extends State<Body> {
                             : CircleAvatar(
                                 child: Text(
                                   "10",
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunito(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       color:
@@ -271,7 +273,7 @@ class _BodyState extends State<Body> {
                   children: [
                     Text(
                       "F",
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                           fontSize: 10,
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
@@ -286,7 +288,7 @@ class _BodyState extends State<Body> {
                           ? CircleAvatar(
                               child: Text(
                                 "11",
-                                style: TextStyle(
+                                style: GoogleFonts.nunito(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.white),
@@ -299,7 +301,7 @@ class _BodyState extends State<Body> {
                               backgroundColor: Colors.white,
                               child: Text(
                                 "11",
-                                style: TextStyle(
+                                style: GoogleFonts.nunito(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Color.fromARGB(255, 158, 129, 190)),
@@ -311,7 +313,7 @@ class _BodyState extends State<Body> {
                   children: [
                     Text(
                       "S",
-                      style: TextStyle(
+                      style: GoogleFonts.nunito(
                           fontSize: 10,
                           fontWeight: FontWeight.w300,
                           color: Colors.white),
@@ -326,7 +328,7 @@ class _BodyState extends State<Body> {
                           ? CircleAvatar(
                               child: Text(
                                 "12",
-                                style: TextStyle(
+                                style: GoogleFonts.nunito(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.white),
@@ -339,7 +341,7 @@ class _BodyState extends State<Body> {
                               backgroundColor: Colors.white,
                               child: Text(
                                 "12",
-                                style: TextStyle(
+                                style: GoogleFonts.nunito(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w400,
                                     color: Color.fromARGB(255, 158, 129, 190)),
@@ -358,7 +360,7 @@ class _BodyState extends State<Body> {
                   Text(""),
                   Text(
                     "Monday  June 7, 2021",
-                    style: TextStyle(
+                    style: GoogleFonts.nunito(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w600),

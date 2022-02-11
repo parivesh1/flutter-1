@@ -1,5 +1,6 @@
 import 'package:doctor/screens/bookings/components/body.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookingsHistoryScreen extends StatefulWidget {
   @override
@@ -11,16 +12,25 @@ class _BookingsHistoryScreenState extends State<BookingsHistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
           title: Text(
             "Bookings History",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            style: GoogleFonts.publicSans(
+                fontWeight: FontWeight.w600, color: Colors.black, fontSize: 24),
           ),
+          centerTitle: true,
+          backgroundColor: Colors.white,
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: Icon(Icons.chevron_left_outlined),
-            color: Colors.black,
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
           ),
+          shape: Border(
+              bottom: BorderSide(color: Colors.black, width: 3),
+              top: BorderSide(color: Colors.black, width: 3),
+              left: BorderSide(color: Colors.black, width: 3),
+              right: BorderSide(color: Colors.black, width: 3)),
         ),
         body: Body());
   }

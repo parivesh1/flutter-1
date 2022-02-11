@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:doctor/screens/doctor%20details/components/days.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:csc_picker/csc_picker.dart';
 
 class DetailsForm extends StatefulWidget {
   const DetailsForm({Key key}) : super(key: key);
@@ -13,6 +15,10 @@ class DetailsForm extends StatefulWidget {
 class _DetailsFormState extends State<DetailsForm> {
   TimeOfDay startingSelectedTime;
   TimeOfDay endingSelectedTime;
+
+  String countryValue = "";
+  String stateValue = "";
+  String cityValue = "";
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController clinicNameController = new TextEditingController();
@@ -36,12 +42,47 @@ class _DetailsFormState extends State<DetailsForm> {
       _startingCheckupTime,
       _endingCheckupTime;
 
+  Widget _buildName() {
+    return Platform.isAndroid
+        ? TextFormField(
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
+            autofocus: true,
+            decoration: getDecoration("Name", Icons.person_sharp),
+            validator: (value) {
+              if (value.isEmpty) {
+                return 'Name is required';
+              }
+              return null;
+            },
+            onSaved: (newValue) => _name = newValue,
+          )
+        : CupertinoTextField(
+            autofocus: true,
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
+            clearButtonMode: OverlayVisibilityMode.always,
+            textCapitalization: TextCapitalization.words,
+            placeholder: "Name",
+            placeholderStyle: TextStyle(fontSize: 16, color: Colors.grey[500]),
+            onSubmitted: (value) {
+              if (value != null) {
+                _name = value;
+              }
+            },
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 1, color: Colors.black),
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 16),
+          );
+  }
+
   Widget _buildClinicName() {
     return Platform.isAndroid
         ? TextFormField(
             autofocus: true,
             decoration:
                 getDecoration("Clinic Name", Icons.medical_services_rounded),
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             validator: (value) {
               if (value.isEmpty) {
                 return 'Name is required';
@@ -51,6 +92,7 @@ class _DetailsFormState extends State<DetailsForm> {
             onSaved: (newValue) => _clinicName = newValue,
           )
         : CupertinoTextField(
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             autofocus: true,
             controller: clinicNameController,
             suffix: Icon(Icons.medical_services_rounded),
@@ -73,6 +115,7 @@ class _DetailsFormState extends State<DetailsForm> {
   Widget _buildSpecialization() {
     return Platform.isAndroid
         ? TextFormField(
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             autofocus: true,
             decoration:
                 getDecoration("Specialization", Icons.medication_rounded),
@@ -86,6 +129,7 @@ class _DetailsFormState extends State<DetailsForm> {
           )
         : CupertinoTextField(
             autofocus: true,
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             controller: specializationController,
             suffix: Icon(Icons.medication_rounded),
             textCapitalization: TextCapitalization.words,
@@ -107,6 +151,7 @@ class _DetailsFormState extends State<DetailsForm> {
   Widget _buildDegree() {
     return Platform.isAndroid
         ? TextFormField(
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             autofocus: true,
             decoration: getDecoration("Degree", Icons.menu_book_rounded),
             validator: (value) {
@@ -119,6 +164,7 @@ class _DetailsFormState extends State<DetailsForm> {
           )
         : CupertinoTextField(
             autofocus: true,
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             controller: degreeController,
             suffix: Icon(Icons.menu_book_rounded),
             textCapitalization: TextCapitalization.words,
@@ -140,6 +186,7 @@ class _DetailsFormState extends State<DetailsForm> {
   Widget _buildFees() {
     return Platform.isAndroid
         ? TextFormField(
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             autofocus: true,
             decoration: getDecoration("Fees", Icons.attach_money_rounded),
             validator: (value) {
@@ -153,6 +200,7 @@ class _DetailsFormState extends State<DetailsForm> {
         : CupertinoTextField(
             autofocus: true,
             controller: feesController,
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             suffix: Icon(Icons.attach_money_rounded),
             textCapitalization: TextCapitalization.words,
             placeholder: "Fees",
@@ -186,8 +234,8 @@ class _DetailsFormState extends State<DetailsForm> {
                       children: [
                         Text(
                           "Starting Checkup Time:",
-                          style:
-                              TextStyle(fontSize: 10, color: Colors.grey[700]),
+                          style: GoogleFonts.mulish(
+                              fontWeight: FontWeight.w800, fontSize: 10),
                         ),
                         startingSelectedTime != null
                             ? Text(
@@ -212,6 +260,8 @@ class _DetailsFormState extends State<DetailsForm> {
             suffix: Icon(Icons.timelapse_sharp),
             textCapitalization: TextCapitalization.words,
             placeholder: "Starting Checkup Time:",
+            style:
+                GoogleFonts.mulish(fontWeight: FontWeight.w800, fontSize: 10),
             placeholderStyle: TextStyle(fontSize: 16),
             showCursor: false,
             onSubmitted: (value) {
@@ -230,13 +280,11 @@ class _DetailsFormState extends State<DetailsForm> {
                             SizedBox(
                               height: 400,
                               child: CupertinoDatePicker(
-                                mode: CupertinoDatePickerMode.time,
+                                  mode: CupertinoDatePickerMode.time,
                                   initialDateTime: DateTime.now(),
                                   onDateTimeChanged: (val) {
-
-                                      startingCheckupTimeController.text =
-                                          "${val.hour}:${val.minute}";
-
+                                    startingCheckupTimeController.text =
+                                        "${val.hour}:${val.minute}";
                                   }),
                             ),
 
@@ -273,8 +321,8 @@ class _DetailsFormState extends State<DetailsForm> {
                       children: [
                         Text(
                           "Ending Checkup Time:",
-                          style:
-                              TextStyle(fontSize: 10, color: Colors.grey[700]),
+                          style: GoogleFonts.mulish(
+                              fontWeight: FontWeight.w800, fontSize: 10),
                         ),
                         endingSelectedTime != null
                             ? Text(
@@ -297,6 +345,8 @@ class _DetailsFormState extends State<DetailsForm> {
             showCursor: false,
             controller: endingCheckupTimeController,
             suffix: Icon(Icons.timelapse_sharp),
+            style:
+                GoogleFonts.mulish(fontWeight: FontWeight.w800, fontSize: 10),
             textCapitalization: TextCapitalization.words,
             placeholder: "Ending Checkup Time:",
             placeholderStyle: TextStyle(fontSize: 16),
@@ -309,31 +359,29 @@ class _DetailsFormState extends State<DetailsForm> {
               showCupertinoModalPopup(
                   context: context,
                   builder: (_) => Container(
-                    height: 500,
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 400,
-                          child: CupertinoDatePicker(
-                              mode: CupertinoDatePickerMode.time,
-                              initialDateTime: DateTime.now(),
-                              onDateTimeChanged: (val) {
+                        height: 500,
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 400,
+                              child: CupertinoDatePicker(
+                                  mode: CupertinoDatePickerMode.time,
+                                  initialDateTime: DateTime.now(),
+                                  onDateTimeChanged: (val) {
+                                    endingCheckupTimeController.text =
+                                        "${val.hour}:${val.minute}";
+                                  }),
+                            ),
 
-                                  endingCheckupTimeController.text =
-                                  "${val.hour}:${val.minute}";
-
-                              }),
+                            // Close the modal
+                            CupertinoButton(
+                              child: const Text('OK'),
+                              onPressed: () => Navigator.of(context).pop(),
+                            )
+                          ],
                         ),
-
-                        // Close the modal
-                        CupertinoButton(
-                          child: const Text('OK'),
-                          onPressed: () => Navigator.of(context).pop(),
-                        )
-                      ],
-                    ),
-                  ));
+                      ));
             },
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -344,42 +392,32 @@ class _DetailsFormState extends State<DetailsForm> {
   }
 
   Widget _buildAddress() {
-    return Platform.isAndroid
-        ? TextFormField(
-            autofocus: true,
-            decoration:
-                getDecoration("Address", Icons.home_repair_service_rounded),
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Address is required';
-              }
-              return null;
-            },
-            onSaved: (newValue) => _address = newValue,
-          )
-        : CupertinoTextField(
-            autofocus: true,
-            controller: addressController,
-            suffix: Icon(Icons.home_repair_service_rounded),
-            textCapitalization: TextCapitalization.words,
-            placeholder: "Address",
-            placeholderStyle: TextStyle(fontSize: 16),
-            onSubmitted: (value) {
-              if (value != null) {
-                _address = value;
-              }
-            },
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(width: 1, color: Colors.black),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 21, vertical: 20),
-          );
+    return CSCPicker(
+      defaultCountry: DefaultCountry.India,
+      selectedItemStyle: GoogleFonts.mulish(fontWeight: FontWeight.w800),
+      disableCountry: true,
+      onCountryChanged: (value) {
+        setState(() {
+          countryValue = value;
+        });
+      },
+      onStateChanged: (value) {
+        setState(() {
+          stateValue = value;
+        });
+      },
+      onCityChanged: (value) {
+        setState(() {
+          cityValue = value;
+        });
+      },
+    );
   }
 
   Widget _buildEmail() {
     return Platform.isAndroid
         ? TextFormField(
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             autofocus: true,
             keyboardType: TextInputType.emailAddress,
             onSaved: (newValue) => _email = newValue,
@@ -397,6 +435,7 @@ class _DetailsFormState extends State<DetailsForm> {
             suffix: Icon(Icons.email_rounded),
             textCapitalization: TextCapitalization.words,
             placeholder: "Email",
+            style: GoogleFonts.mulish(fontWeight: FontWeight.w800),
             placeholderStyle: TextStyle(fontSize: 16),
             onSubmitted: (value) {
               if (value != null) {
@@ -418,6 +457,10 @@ class _DetailsFormState extends State<DetailsForm> {
       child: Form(
         child: Column(
           children: [
+            SizedBox(
+              height: 16,
+            ),
+            _buildName(),
             SizedBox(
               height: 16,
             ),
@@ -457,8 +500,8 @@ class _DetailsFormState extends State<DetailsForm> {
               child: Material(
                 child: Text(
                   "Select Days on which you take Appointments:",
-                  style: TextStyle(
-                      fontSize: 16,
+                  style: GoogleFonts.publicSans(
+                      fontSize: 18,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.none),
@@ -471,9 +514,14 @@ class _DetailsFormState extends State<DetailsForm> {
             ),
             Platform.isAndroid
                 ? ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(50)))),
                     child: Text(
                       "Submit",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      style: GoogleFonts.publicSans(
+                          fontSize: 16, color: Colors.white),
                     ),
                     onPressed: () {
                       if (!_formKey.currentState.validate()) {
@@ -481,13 +529,14 @@ class _DetailsFormState extends State<DetailsForm> {
                       }
                       _formKey.currentState.save();
 
-                      Navigator.pushNamed(context, 'loginSuccess');
+                      Navigator.pushNamed(context, 'homeScreen');
                     },
                   )
                 : CupertinoButton(
                     child: Text(
                       "Submit",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      style: GoogleFonts.publicSans(
+                          fontSize: 16, color: Colors.white),
                     ),
                     color: Colors.blue,
                     onPressed: () {
@@ -496,7 +545,7 @@ class _DetailsFormState extends State<DetailsForm> {
                       }
                       _formKey.currentState.save();
 
-                      Navigator.pushNamed(context, 'loginSuccess');
+                      Navigator.pushNamed(context, 'homeScreen');
                     },
                   ),
           ],

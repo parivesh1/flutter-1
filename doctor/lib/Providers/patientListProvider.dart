@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class PatientListProvider extends ChangeNotifier {
   List<PatientModel> bookingList = [
-    PatientModel("Shivam", "male", 22, 20, 1),
+    PatientModel("Shivam", "Male", 22, 20, 1),
     PatientModel("Richard", "Male", 40, 25, 2)
   ];
   List<PatientModel> reachedList = [
-    PatientModel("Bard", "male", 15, 10, 3),
+    PatientModel("Bard", "Male", 15, 10, 3),
     PatientModel("Ciri", "Female", 20, 18, 4)
   ];
   void add(PatientModel ele) {

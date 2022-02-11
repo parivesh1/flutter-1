@@ -37,6 +37,8 @@ dependencies:
   drawerbehavior: ^2.2.1
   shrink_sidemenu: ^2.0.0+2-null-safety
   intl: ^0.17.0
+  csc_picker:
+  url_launcher: ^6.0.20
 
 dev_dependencies:
   flutter_test:

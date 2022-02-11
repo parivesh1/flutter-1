@@ -1,12 +1,13 @@
 import 'package:doctor/Providers/patientListProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Widget CurrentPatient(PatientModel p) {
   return Card(
     margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8),
     elevation: 30,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    color: Colors.green[400],
+    color: Color.fromARGB(255, 53, 125, 192),
     shadowColor: Colors.grey[600],
     child: Padding(
       padding: const EdgeInsets.all(20),
@@ -23,18 +24,21 @@ Widget CurrentPatient(PatientModel p) {
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Text(
                       "Current Patient:",
-                      style:
-                          TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.nunito(
+                          fontSize: 21,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                   ),
                   Text(
                     "${p.name}",
-                    style: TextStyle(fontSize: 16, color: Colors.black),
+                    style:
+                        GoogleFonts.mulish(fontSize: 12, color: Colors.white),
                   ),
                   Text(
-                    "${p.gender} ,${p.age}",
-                    style: TextStyle(
-                        fontSize: 12, color: Colors.black.withOpacity(0.6)),
+                    "${p.gender}, ${p.age}",
+                    style:
+                        GoogleFonts.mulish(fontSize: 12, color: Colors.white),
                   ),
                 ],
               ),
@@ -53,13 +57,18 @@ Widget CurrentPatient(PatientModel p) {
             ],
           ),
           Divider(
-            color: Colors.black.withOpacity(0.4),
+            color: Colors.white,
             thickness: 0.4,
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text("Time left : ${p.minutesLeft} mins")],
+            children: [
+              Text(
+                "Time left : ${p.minutesLeft} mins",
+                style: GoogleFonts.mulish(fontSize: 12, color: Colors.white),
+              )
+            ],
           )
         ],
       ),

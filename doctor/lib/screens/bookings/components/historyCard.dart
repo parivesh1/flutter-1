@@ -1,5 +1,6 @@
 import 'package:doctor/screens/bookings/components/showBottomSheet.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HistoryCards extends StatelessWidget {
   final int i;
@@ -38,11 +39,13 @@ class HistoryCards extends StatelessWidget {
                   ),
                   Text(
                     name,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                    style: GoogleFonts.nunito(
+                        fontSize: 18, fontWeight: FontWeight.w700),
                   ),
                   Text(
                     timeOfDay.format(context),
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+                    style: GoogleFonts.publicSans(
+                        fontSize: 15, fontWeight: FontWeight.w300),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
@@ -56,7 +59,7 @@ class HistoryCards extends StatelessWidget {
                 child: CircleAvatar(
                   child: Text(
                     i.toString(),
-                    style: TextStyle(color: Colors.black),
+                    style: GoogleFonts.publicSans(color: Colors.black),
                   ),
                   radius: 16,
                   backgroundColor: Colors.white,
